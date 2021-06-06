@@ -1,13 +1,27 @@
-export const increment = (amount) => {
+export const increaseTimer = (seconds) => {
   return {
-    type: "INCREMENT",
-    payload: amount
-  }
+    type: "INCREASE_TIMER",
+    payload: seconds
+  };
 };
 
-export const decrement = (amount) => {
+export const decreaseTimer = (seconds) => {
   return {
-    type: "DECREMENT",
-    payload: amount
-  }
+    type: "DECREASE_TIMER",
+    payload: seconds
+  };
+};
+
+export const setTimer = (seconds) => {
+  return {
+    type: "SET_TIMER",
+    payload: seconds
+  };
+};
+
+export const setTheme = (option) => {
+  return {
+    type: "SET_THEME",
+    payload: option
+  };
 };
