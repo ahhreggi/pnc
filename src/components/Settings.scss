@@ -1,0 +1,17 @@
+@import "../styles/global.scss";
+
+.Settings {
+  border: 1px solid white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  @include flex-center-col;
+  backdrop-filter: blur(10px) brightness(75%);
+  @include custom-scrollbar;
+  &.hide {
+    display: none;
+  }
+  .close {
+    margin-top: 3rem;
+  }
+}

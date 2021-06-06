@@ -1,35 +1,34 @@
-import classNames from "classnames";
-import Timer from "./components/Timer";
-import "./App.scss";
-import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setTimer, setTheme } from "./actions";
+import { setSettings } from "./actions";
+import Timer from "./components/Timer";
+import Settings from "./components/Settings";
+import classNames from "classnames";
+import "./App.scss";
+
 
 const App = () => {
-  const [state, setState] = useState({
-    showSettings: false
-  });
-  const toggleSettings = () => {
-    setState({ ...state, showSettings: !state.showSettings });
-  };
-  const theme = useSelector(state => state.theme) || "blue";
+
+  // State Management
+  const theme = useSelector(state => state.theme);
   const dispatch = useDispatch();
+
+  // Component Variables
   const appStyles = classNames({
     App: true,
     [`theme-${theme}`]: true
   });
+
   return (
     <main className={appStyles}>
-      <h2>Pomomilk</h2>
-      <Timer />
-      <h3 onClick={() => toggleSettings()}>settings</h3>
-      {state.showSettings &&
-        <div className="settings">
-          <h3 onClick={() => dispatch(setTheme("next"))}>theme: {theme}</h3>
-        </div>
-      }
+      <section className="display">
+        <h2>Pomomilk</h2>
+        <Timer />
+        <h3 className="settings-toggle" onClick={() => dispatch(setSettings(true))}>settings</h3>
+      </section>
+      <Settings />
     </main>
   );
+
 };
 
 export default App;

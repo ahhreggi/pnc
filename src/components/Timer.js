@@ -1,16 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 import { increaseTimer, decreaseTimer, setTimer } from "../actions";
-import classNames from "classnames";
 import moment from "moment";
+import classNames from "classnames";
 import "./Timer.scss";
 
 const Timer = () => {
+
+  // State Management
   const timer = useSelector(state => state.timer);
   const dispatch = useDispatch();
+
+  // Component Variables
   const timerStyles = classNames({
     Timer: true
   });
-
   const time = moment(timer * 1000).format("mm:ss");
   const [minutes, seconds] = time.split(":");
 

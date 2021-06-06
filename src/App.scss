@@ -4,16 +4,10 @@
   color: $white;
   height: 100vh;
   width: 100vw;
-  @include flex-center-col;
+  @include flex-center;
   @include custom-scrollbar;
-  h3 {
-    margin-top: 0.5rem;
-    height: 3rem;
-    @include flex-center;
-    &:hover {
-      font-size: 2.1rem;
-      cursor: pointer;
-    }
+  section.display {
+    @include flex-center-col;
   }
 }
 .theme-red {

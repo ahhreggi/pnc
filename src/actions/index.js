@@ -25,3 +25,9 @@ export const setTheme = (option) => {
     payload: option
   };
 };
+
+export const setSettings = (option) => {
+  return {
+    type: option ? "SHOW_SETTINGS" : "CLOSE_SETTINGS"
+  };
+};
