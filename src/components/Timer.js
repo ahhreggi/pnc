@@ -34,11 +34,11 @@ const Timer = () => {
   const [minutes, seconds] = display.split(":");
 
   return (
-    <div className={timerStyles}>
+    <div className={timerStyles} onClick={() => toggleTimer()}>
       <span className="minutes">
         <h1>{minutes}</h1>
       </span>
-      <span className="colon" onClick={() => toggleTimer()}>
+      <span className="colon">
         <h1>:</h1>
       </span>
       <span className="seconds">

@@ -71,3 +71,15 @@ export const setChillax = (option) => {
     payload: option
   };
 };
+
+export const toggleAutoStart = () => {
+  return {
+    type: "TOGGLE_AUTOSTART"
+  };
+};
+
+export const getNextStep = () => {
+  return {
+    type: "NEXT_STEP"
+  };
+};

@@ -5,7 +5,9 @@ const defaultSettings = {
   chill: 300,
   chillax: 900,
   mode: "focus",
-  cycles: 4
+  interval: 4,
+  step: 1,
+  autoStart: true
 };
 
 const options = {
@@ -56,9 +58,26 @@ const settingsReducer = (state = defaultSettings, action) => {
     }
     return { ...state, chillax: chillax };
   }
+  case "TOGGLE_AUTOSTART":
+    return { ...state, autoStart: !state.autoStart };
+  case "NEXT_STEP": {
+    let step = state.step + 1;
+    const maxSteps = state.interval * 2;
+    let mode;
+    if (step % 2) {
+      mode = "focus";
+      if (step > maxSteps) {
+        step = 1;
+      }
+    } else {
+      mode = step < maxSteps ? "chill" : "chillax";
+    }
+    return { ...state, step: step, mode: mode };
+  }
   default:
     return state;
   }
+
 };
 
 export default settingsReducer;

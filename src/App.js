@@ -23,7 +23,7 @@ const App = () => {
       <section className="display">
         <h2>Pomomilk</h2>
         <Timer />
-        <h3 className="settings-toggle" onClick={() => dispatch(toggleSettings())}>settings</h3>
+        <h3 className="settings-toggle settings" onClick={() => dispatch(toggleSettings())}>settings</h3>
       </section>
       <Settings />
     </main>
