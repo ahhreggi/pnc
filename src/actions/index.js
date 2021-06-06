@@ -31,3 +31,10 @@ export const toggleSettings = () => {
     type: "TOGGLE_SETTINGS"
   };
 };
+
+export const setMode = (option) => {
+  return {
+    type: "SET_MODE",
+    payload: option
+  };
+};

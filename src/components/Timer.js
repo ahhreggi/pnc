@@ -8,7 +8,6 @@ const Timer = () => {
 
   // State Management
   const timer = useSelector(state => state.timer);
-  const dispatch = useDispatch();
 
   // Component Variables
   const timerStyles = classNames({
@@ -19,13 +18,13 @@ const Timer = () => {
 
   return (
     <div className={timerStyles}>
-      <span className="minutes" onClick={() => dispatch(increaseTimer(1))}>
+      <span className="minutes">
         <h1>{minutes}</h1>
       </span>
-      <span className="colon" onClick={() => dispatch(setTimer(0))}>
+      <span className="colon">
         <h1>:</h1>
       </span>
-      <span className="seconds" onClick={() => dispatch(decreaseTimer(1))}>
+      <span className="seconds">
         <h1>{seconds}</h1>
       </span>
     </div>

@@ -1,4 +1,4 @@
-const timerReducer = (state = 0, action) => {
+const timerReducer = (state = 1500, action) => {
   switch (action.type) {
   case "INCREASE_TIMER": {
     const newTime = state + action.payload;
