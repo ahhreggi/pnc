@@ -1,8 +1,18 @@
+import classNames from "classnames";
+import Clock from "./components/Clock";
+import "./App.scss";
+
 const App = () => {
+  const appStyles = classNames({
+    App: true
+  });
   return (
-    <div className="App">
-      Pomomilk
-    </div>
+    <main className={appStyles}>
+      <header>
+        <h1>Pomomilk</h1>
+      </header>
+      <Clock />
+    </main>
   );
 };
 

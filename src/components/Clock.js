@@ -1,11 +1,12 @@
-const classNames = require("classnames");
+import classNames from "classnames";
+import "./Clock.scss";
 
 const Clock = () => {
-  const styles = classNames({
+  const clockStyles = classNames({
     Clock: true
   });
   return (
-    <div className={styles}>
+    <div className={clockStyles}>
       12:34
     </div>
   );
