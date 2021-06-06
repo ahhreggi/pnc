@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import Clock from "./components/Clock";
+import Timer from "./components/Timer";
 import "./App.scss";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
   return (
     <main className={appStyles}>
       <h2>Pomomilk</h2>
-      <Clock />
+      <Timer />
       <h3>settings</h3>
     </main>
   );

@@ -1,12 +1,12 @@
 import classNames from "classnames";
-import "./Clock.scss";
+import "./Timer.scss";
 
-const Clock = () => {
-  const clockStyles = classNames({
-    Clock: true
+const Timer = () => {
+  const timerStyles = classNames({
+    Timer: true
   });
   return (
-    <div className={clockStyles}>
+    <div className={timerStyles}>
       <span className="minutes">
         <h1>03</h1>
       </span>
@@ -20,4 +20,4 @@ const Clock = () => {
   );
 };
 
-export default Clock;
+export default Timer;
