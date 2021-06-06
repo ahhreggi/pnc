@@ -4,7 +4,8 @@ const defaultSettings = {
   focus: 1500,
   chill: 300,
   chillax: 900,
-  mode: "focus"
+  mode: "focus",
+  cycles: 4
 };
 
 const options = {

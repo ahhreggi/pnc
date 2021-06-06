@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, decreaseTimer, setTimer } from "../actions";
+import { increaseTimer, decreaseTimer, setTimer, startTimer, stopTimer } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Timer.scss";
@@ -7,21 +8,37 @@ import "./Timer.scss";
 const Timer = () => {
 
   // State Management
-  const timer = useSelector(state => state.timer);
+  const { enabled, time } = useSelector(state => state.timer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (enabled) {
+      const countdown = setTimeout(() => {
+        dispatch(decreaseTimer(1));
+        // When the timer reaches 0, either stop or start the next timer
+      }, 1000);
+      return () => clearTimeout(countdown);
+    }
+  });
+
+  const toggleTimer = () => {
+    dispatch(enabled ? stopTimer() : startTimer());
+  };
 
   // Component Variables
   const timerStyles = classNames({
-    Timer: true
+    Timer: true,
+    enabled: enabled
   });
-  const time = moment(timer * 1000).format("mm:ss");
-  const [minutes, seconds] = time.split(":");
+  const display = moment(time * 1000).format("mm:ss");
+  const [minutes, seconds] = display.split(":");
 
   return (
     <div className={timerStyles}>
       <span className="minutes">
         <h1>{minutes}</h1>
       </span>
-      <span className="colon">
+      <span className="colon" onClick={() => toggleTimer()}>
         <h1>:</h1>
       </span>
       <span className="seconds">

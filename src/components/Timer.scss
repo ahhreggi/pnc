@@ -11,6 +11,9 @@
     cursor: pointer;
     filter: brightness(120%);
   }
+  &.enabled {
+    background-color: $black;
+  }
   .minutes,
   .seconds,
   .colon {

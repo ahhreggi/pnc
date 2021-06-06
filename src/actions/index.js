@@ -19,6 +19,18 @@ export const setTimer = (seconds) => {
   };
 };
 
+export const startTimer = () => {
+  return {
+    type: "START_TIMER"
+  };
+};
+
+export const stopTimer = () => {
+  return {
+    type: "STOP_TIMER"
+  };
+};
+
 export const setTheme = (option) => {
   return {
     type: "SET_THEME",

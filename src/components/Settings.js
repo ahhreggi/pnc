@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setTimer, setTheme, toggleSettings, setMode, setFocus, setChill, setChillax } from "../actions";
+import { setTimer, stopTimer, setTheme, toggleSettings, setMode, setFocus, setChill, setChillax } from "../actions";
 import classNames from "classnames";
 import "./Settings.scss";
 
@@ -17,6 +17,7 @@ const Settings = () => {
 
   const onResetTimer = (mode = settings.mode) => {
     const startTime = settings[mode];
+    dispatch(stopTimer());
     dispatch(setTimer(startTime));
   };
 
@@ -36,8 +37,10 @@ const Settings = () => {
       <h3 className="settings-toggle" onClick={() => onSetMode("chillax")}>chillax mode</h3>
 
       <h3 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>focus: {settings.focus}</h3>
-      <h3 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>chill: {settings.chill}</h3>
-      <h3 className="settings-toggle" onClick={() => dispatch(setChillax("next"))}>chillax: {settings.chillax}</h3>
+      <h3 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>lil chill: {settings.chill}</h3>
+      <h3 className="settings-toggle" onClick={() => dispatch(setChillax("next"))}>big chill: {settings.chillax}</h3>
+
+      <h3 className="settings-toggle">big chill interval: {settings.cycles}</h3>
 
       <h3 className="settings-toggle" onClick={() => onResetTimer()}>reset</h3>
 
