@@ -38,3 +38,24 @@ export const setMode = (option) => {
     payload: option
   };
 };
+
+export const setFocus = (option) => {
+  return {
+    type: "SET_FOCUS",
+    payload: option
+  };
+};
+
+export const setChill = (option) => {
+  return {
+    type: "SET_CHILL",
+    payload: option
+  };
+};
+
+export const setChillax = (option) => {
+  return {
+    type: "SET_CHILLAX",
+    payload: option
+  };
+};

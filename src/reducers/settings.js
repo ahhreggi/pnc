@@ -16,7 +16,7 @@ const options = {
 
 const getNext = (current, options) => {
   let index = options.indexOf(current);
-  index = index === current.length - 1 ? 0 : index + 1;
+  index = index === options.length - 1 ? 0 : index + 1;
   return options[index];
 };
 
@@ -40,6 +40,20 @@ const settingsReducer = (state = defaultSettings, action) => {
       focus = getNext(state.focus, options.focus);
     }
     return { ...state, focus: focus };
+  }
+  case "SET_CHILL": {
+    let chill = action.payload;
+    if (action.payload === "next") {
+      chill = getNext(state.chill, options.chill);
+    }
+    return { ...state, chill: chill };
+  }
+  case "SET_CHILLAX": {
+    let chillax = action.payload;
+    if (action.payload === "next") {
+      chillax = getNext(state.chillax, options.chillax);
+    }
+    return { ...state, chillax: chillax };
   }
   default:
     return state;
