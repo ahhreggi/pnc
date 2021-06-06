@@ -1,17 +1,33 @@
 @import "./styles/global.scss";
 
 .App {
-  font-family: $font-main;
   color: $white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $blue;
   height: 100vh;
   width: 100vw;
-
-  h1 {
-    font-size: 4rem;
-  }
+  @include flex-center-col;
+  @include custom-scrollbar;
+}
+.theme-red {
+  background-color: $red;
+}
+.theme-orange {
+  background-color: $orange;
+}
+.theme-yellow {
+  background-color: $yellow;
+}
+.theme-green {
+  background-color: $green;
+}
+.theme-blue {
+  background-color: $blue;
+}
+.theme-purple {
+  background-color: $purple;
+}
+.theme-navy {
+  background-color: $navy;
+}
+.theme-grey {
+  background-color: $grey;
 }

@@ -1,5 +1,9 @@
 @import "../styles/global.scss";
 
 .Clock {
-  font-size: 12rem;
+  padding: 1rem 2rem 0 2rem;
+  &:hover {
+    cursor: pointer;
+    background-color: $navy;
+  }
 }

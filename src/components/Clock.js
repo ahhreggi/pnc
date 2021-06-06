@@ -7,7 +7,7 @@ const Clock = () => {
   });
   return (
     <div className={clockStyles}>
-      12:34
+      <h1>12:34</h1>
     </div>
   );
 };
