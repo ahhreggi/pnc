@@ -26,8 +26,8 @@ export const setTheme = (option) => {
   };
 };
 
-export const setSettings = (option) => {
+export const toggleSettings = () => {
   return {
-    type: option ? "SHOW_SETTINGS" : "CLOSE_SETTINGS"
+    type: "TOGGLE_SETTINGS"
   };
 };
