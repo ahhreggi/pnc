@@ -5,16 +5,16 @@
     "node": true
   },
   "extends": [
-    "airbnb",
     "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
-    "prettier/react",
+    "plugin:react/recommended"
+    // "airbnb",
+    // "plugin:import/errors",
+    // "plugin:jsx-a11y/recommended",
+    // "plugin:prettier/recommended",
+    // "prettier/react"
   ],
   "plugins": [
-    "react-hooks",
+    "react-hooks"
   ],
   "rules": {
     "import/no-named-as-default": 0,
