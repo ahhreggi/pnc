@@ -9,10 +9,11 @@
   margin-bottom: 0.5rem;
   &:hover {
     cursor: pointer;
-    filter: brightness(120%);
+    // filter: brightness(120%);
+    background-color: $darkest;
   }
   &.enabled {
-    background-color: $black;
+    background-color: $darkest;
   }
   .minutes,
   .seconds,

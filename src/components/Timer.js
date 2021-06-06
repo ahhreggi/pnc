@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, decreaseTimer, setTimer, startTimer, stopTimer } from "../actions";
+import { increaseTimer, decreaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Timer.scss";
@@ -14,7 +14,11 @@ const Timer = () => {
   useEffect(() => {
     if (enabled) {
       const countdown = setTimeout(() => {
-        dispatch(decreaseTimer(1));
+        if (time) {
+          dispatch(decreaseTimer(1));
+        } else {
+          dispatch(getNextStep());
+        }
         // When the timer reaches 0, either stop or start the next timer
       }, 1000);
       return () => clearTimeout(countdown);
@@ -31,7 +35,10 @@ const Timer = () => {
     enabled: enabled
   });
   const display = moment(time * 1000).format("mm:ss");
-  const [minutes, seconds] = display.split(":");
+  let [minutes, seconds] = display.split(":");
+  if (time === 3600) {
+    minutes = 60;
+  }
 
   return (
     <div className={timerStyles} onClick={() => toggleTimer()}>

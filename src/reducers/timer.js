@@ -7,11 +7,11 @@ const timerReducer = (state = defaultTimer, action) => {
   switch (action.type) {
   case "INCREASE_TIMER": {
     const time = state.time + action.payload;
-    return time <= 3600 ? { ...state, time: time } : state;
+    return { ...state, time: time <= 3600 ? time : 3600 };
   }
   case "DECREASE_TIMER": {
     const time = state.time - action.payload;
-    return time >= 0 ? { ...state, time: time } : state;
+    return { ...state, time: time >= 0 ? time : 0 };
   }
   case "SET_TIMER":
     return { ...state, time: action.payload };

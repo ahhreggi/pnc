@@ -14,7 +14,7 @@ const options = {
   themes: ["blue", "red", "green", "purple", "yellow", "orange", "navy", "grey"],
   focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600],
   chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600],
-  chillax: [300, 600, 900, 1200, 1500, 1800, 2700, 3600]
+  chillax: [300, 600, 900, 1200, 1500, 1800, 2700, 3300, 3600]
 };
 
 const getNext = (current, options) => {
@@ -64,11 +64,11 @@ const settingsReducer = (state = defaultSettings, action) => {
     let step = state.step + 1;
     const maxSteps = state.interval * 2;
     let mode;
+    if (step > maxSteps) {
+      step = 1;
+    }
     if (step % 2) {
       mode = "focus";
-      if (step > maxSteps) {
-        step = 1;
-      }
     } else {
       mode = step < maxSteps ? "chill" : "chillax";
     }

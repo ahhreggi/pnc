@@ -11,10 +11,14 @@
   &.hide {
     display: none;
   }
-  .close {
-    margin-top: 3rem;
-  }
   h2 {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+  }
+  .current {
+    margin-bottom: 2rem;
+  }
+  .page-control,
+  .close {
+    margin-top: 2rem;
   }
 }
