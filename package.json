@@ -1,10 +1,10 @@
 {
-  "name": "pomochill",
+  "name": "pomomilk",
   "version": "0.1.0",
   "author": "Maria Regina Sirilan",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahhreggi/pomochill.git"
+    "url": "git+https://github.com/ahhreggi/pomomilk.git"
   },
   "license": "MIT",
   "dependencies": {
