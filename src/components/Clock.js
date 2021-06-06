@@ -7,15 +7,15 @@ const Clock = () => {
   });
   return (
     <div className={clockStyles}>
-      <div className="minutes">
+      <span className="minutes">
         <h1>03</h1>
-      </div>
-      <div className="colon">
+      </span>
+      <span className="colon">
         <h1>:</h1>
-      </div>
-      <div className="seconds">
+      </span>
+      <span className="seconds">
         <h1>06</h1>
-      </div>
+      </span>
     </div>
   );
 };

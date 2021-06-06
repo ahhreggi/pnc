@@ -8,6 +8,12 @@
   @include custom-scrollbar;
   h3 {
     margin-top: 0.5rem;
+    height: 3rem;
+    @include flex-center;
+    &:hover {
+      font-size: 2.1rem;
+      cursor: pointer;
+    }
   }
 }
 .theme-red {

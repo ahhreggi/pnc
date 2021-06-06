@@ -8,7 +8,9 @@
   @include flex-center;
   &:hover {
     cursor: pointer;
+    filter: brightness(120%);
   }
+
   .minutes,
   .seconds,
   .colon {
@@ -16,13 +18,10 @@
   }
   .minutes {
     justify-content: flex-end;
+    width: 40%;
   }
   .seconds {
     justify-content: flex-start;
-  }
-
-  .minutes,
-  .seconds {
     width: 40%;
   }
   .colon {
