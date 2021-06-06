@@ -6,6 +6,9 @@
   width: 100vw;
   @include flex-center-col;
   @include custom-scrollbar;
+  h3 {
+    margin-top: 0.5rem;
+  }
 }
 .theme-red {
   background-color: $red;

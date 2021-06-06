@@ -1,9 +1,32 @@
 @import "../styles/global.scss";
 
 .Clock {
-  padding: 1rem 2rem 0 2rem;
+  padding: 1.5rem 2rem 0rem 2rem;
+  background-color: $navy;
+  border-radius: 15px;
+  width: 42rem;
+  @include flex-center;
   &:hover {
     cursor: pointer;
-    background-color: $navy;
+  }
+  .minutes,
+  .seconds,
+  .colon {
+    @include flex-center;
+  }
+  .minutes {
+    justify-content: flex-end;
+  }
+  .seconds {
+    justify-content: flex-start;
+  }
+
+  .minutes,
+  .seconds {
+    width: 40%;
+  }
+  .colon {
+    width: 10%;
+    margin: 0 0.5rem;
   }
 }
