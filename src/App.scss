@@ -6,10 +6,28 @@
   width: 100vw;
   @include flex-center;
   @include custom-scrollbar;
-  .About {
+  .About,
+  .Help {
     @include overlay;
     h2 {
       margin-bottom: 2rem;
+    }
+    span.key {
+      border: 2px solid $white;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      min-width: 4rem;
+      padding: 0.5rem 0.5rem 0.4rem 0.5rem;
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  .Help {
+    h3 {
+      margin: 1rem 0 2rem 0;
+    }
+    h4 {
+      margin: 1rem 0;
     }
   }
   header.nav {
@@ -23,6 +41,9 @@
       opacity: 0.7;
       &:hover {
         opacity: 1;
+      }
+      &:last-child {
+        width: 4rem;
       }
     }
   }

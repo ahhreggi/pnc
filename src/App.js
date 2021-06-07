@@ -4,6 +4,7 @@ import { toggleSettings } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
+import Help from "./components/Help";
 import { stopTimer } from "./actions";
 import classNames from "classnames";
 import "./App.scss";
@@ -12,6 +13,7 @@ import "./App.scss";
 const App = () => {
 
   const [showAbout, setShowAbout] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   // State Management
   const { theme, mode } = useSelector(state => state.settings);
@@ -43,6 +45,7 @@ const App = () => {
       <header className="nav">
         <h3 className="settings-toggle settings" onClick={() => setShowAbout(true)}>about</h3>
         <h3 className="settings-toggle settings" onClick={() => onToggleSettings()}>settings</h3>
+        <h3 className="settings-toggle settings" onClick={() => setShowHelp(true)}>help</h3>
       </header>
       <section className="display">
         <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
@@ -53,6 +56,9 @@ const App = () => {
       </section>
       {showAbout &&
         <About onClose={setShowAbout} />
+      }
+      {showHelp &&
+        <Help onClose={setShowHelp} />
       }
       <Settings />
     </main>
