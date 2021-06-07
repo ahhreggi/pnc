@@ -13,8 +13,10 @@ body {
 }
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
+  text-align: center;
 }
 h1 {
   font-size: 15rem;
@@ -25,4 +27,15 @@ h2 {
 }
 h3 {
   font-size: 2rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+p {
+  font-size: 1.5rem;
+  text-align: center;
+  max-width: 47rem;
+  span {
+    font-weight: 600;
+  }
 }

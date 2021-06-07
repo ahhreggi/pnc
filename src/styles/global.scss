@@ -10,12 +10,19 @@ h2.settings-toggle {
     cursor: pointer;
   }
 }
-
 h3.settings-toggle {
   height: 3rem;
   @include flex-center;
   &:hover {
     font-size: 2.1rem;
+    cursor: pointer;
+  }
+}
+h4.settings-toggle {
+  height: 2rem;
+  @include flex-center;
+  &:hover {
+    font-size: 1.6rem;
     cursor: pointer;
   }
 }
