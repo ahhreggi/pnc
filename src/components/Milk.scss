@@ -2,7 +2,7 @@
 
 .Milk {
   .liquid {
-    width: 300vw;
+    width: 300%;
     position: fixed;
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition: 3s;
@@ -10,13 +10,13 @@
     box-shadow: 0px 0px 1px 0px $white;
     &.one {
       animation: animate1 11s infinite;
-      left: -75vw;
+      left: -150%;
       bottom: -100vh;
       opacity: 0.7;
     }
     &.two {
       animation: animate2 13s infinite;
-      left: -105vw;
+      left: -120%;
       bottom: -100vh;
       opacity: 0.7;
     }
@@ -50,36 +50,36 @@
   }
   @keyframes animate1 {
     0% {
-      transform: translate(-55vw, 8px) rotate(-1deg);
+      transform: translate(-5vw, 8px) rotate(-1deg);
     }
     25% {
-      transform: translate(-52vw, -8px) rotate(1deg);
+      transform: translate(2vw, -8px) rotate(1deg);
     }
     50% {
-      transform: translate(-75vw, 8px) rotate(-1deg);
+      transform: translate(-5vw, 8px) rotate(-1deg);
     }
     75% {
-      transform: translate(-55vw, -8px) rotate(1deg);
+      transform: translate(5vw, -8px) rotate(1deg);
     }
     100% {
-      transform: translate(-58vw, 8px) rotate(-1deg);
+      transform: translate(-8vw, 8px) rotate(-1deg);
     }
   }
   @keyframes animate2 {
     0% {
-      transform: translate(-54vw, -8px) rotate(1deg);
+      transform: translate(4vw, -8px) rotate(1deg);
     }
     25% {
-      transform: translate(-51vw, 8px) rotate(-1deg);
+      transform: translate(-1vw, 8px) rotate(-1deg);
     }
     50% {
-      transform: translate(-35vw, -8px) rotate(1deg);
+      transform: translate(5vw, -8px) rotate(1deg);
     }
     75% {
-      transform: translate(-52vw, 8px) rotate(-1deg);
+      transform: translate(-2vw, 8px) rotate(-1deg);
     }
     100% {
-      transform: translate(-58vw, -8px) rotate(1deg);
+      transform: translate(8vw, -8px) rotate(1deg);
     }
   }
 }
