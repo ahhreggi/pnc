@@ -12,6 +12,18 @@
 @mixin text-shadow {
   text-shadow: 0 0 1rem $dark;
 }
+@mixin overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  @include flex-center-col;
+  backdrop-filter: blur(10px) brightness(75%);
+  @include custom-scrollbar;
+  @include text-shadow;
+  &.hide {
+    display: none;
+  }
+}
 
 @mixin custom-scrollbar {
   overflow: overlay;

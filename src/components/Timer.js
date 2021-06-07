@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, decreaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "../actions";
+import { decreaseTimer, startTimer, stopTimer, getNextStep } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Timer.scss";
@@ -19,7 +19,6 @@ const Timer = () => {
         } else {
           dispatch(getNextStep());
         }
-        // When the timer reaches 0, either stop or start the next timer
       }, 1000);
       return () => clearTimeout(countdown);
     }

@@ -6,6 +6,12 @@
   width: 100vw;
   @include flex-center;
   @include custom-scrollbar;
+  .About {
+    @include overlay;
+    h2 {
+      margin-bottom: 2rem;
+    }
+  }
   header.nav {
     position: absolute;
     top: 0;

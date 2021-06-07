@@ -2,6 +2,15 @@
 @import "./typography";
 @import "./mixins";
 
+h2.settings-toggle {
+  height: 5rem;
+  @include flex-center;
+  &:hover {
+    font-size: 4.2rem;
+    cursor: pointer;
+  }
+}
+
 h3.settings-toggle {
   height: 3rem;
   @include flex-center;
@@ -9,4 +18,9 @@ h3.settings-toggle {
     font-size: 2.1rem;
     cursor: pointer;
   }
+}
+
+.page-control,
+.close {
+  margin-top: 2rem;
 }

@@ -84,7 +84,6 @@ const Settings = () => {
               <span className="option">big chill:</span>
               <span className="value chillax">{formatTime(settings.chillax)}</span>
             </h3>
-            {/* <h3 className="settings-toggle">big chill interval: {settings.interval}</h3> */}
             <h3 className="settings-toggle page-control" onClick={() => setPage(1)}>&lt; prev page</h3>
           </>
         }
