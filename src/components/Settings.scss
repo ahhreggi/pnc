@@ -8,6 +8,7 @@
   @include flex-center-col;
   backdrop-filter: blur(10px) brightness(75%);
   @include custom-scrollbar;
+  @include text-shadow;
   &.hide {
     display: none;
   }
@@ -16,9 +17,20 @@
   }
   .current {
     margin-bottom: 2rem;
+    span.value {
+      width: 20rem;
+    }
   }
   .page-control,
   .close {
     margin-top: 2rem;
+  }
+  span.option,
+  span.value {
+    width: 10rem;
+  }
+  span.option {
+    text-align: right;
+    margin-right: 1rem;
   }
 }

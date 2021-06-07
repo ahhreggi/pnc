@@ -53,23 +53,37 @@ const Settings = () => {
     <div className={settingsStyles}>
       <h2>Settings</h2>
 
-      <h3 className="current">current step: {settings.step}/{settings.interval * 2} ({settings.mode})</h3>
+      <h3 className="current">
+        current step: {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{settings.mode}</span>)
+      </h3>
 
       <div className="settings-page">
         {page === 1 &&
           <>
-            <h3 className="settings-toggle" onClick={() => onResetTimer()}>reset current step</h3>
-            <h3 className="settings-toggle" onClick={() => onSkipTimer()}>skip current step</h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h3>
+            <h3 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h3>
+            <h3 className="settings-toggle font-yellow" onClick={() => onSkipTimer()}>skip current step</h3>
+            <h3 className="settings-toggle font-red" onClick={() => onResetTimer()}>reset current step</h3>
             <h3 className="settings-toggle page-control" onClick={() => setPage(2)}>next page &gt;</h3>
           </>
         }
         {page === 2 &&
           <>
-            <h3 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>theme: {settings.theme}</h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>focus: {formatTime(settings.focus)}</h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>lil chill: {formatTime(settings.chill)}</h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setChillax("next"))}>big chill: {formatTime(settings.chillax)}</h3>
+            <h3 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
+              <span className="option">theme:</span>
+              <span className={`value font-${settings.theme}`}>{settings.theme}</span>
+            </h3>
+            <h3 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
+              <span className="option">focus:</span>
+              <span className="value focus">{formatTime(settings.focus)}</span>
+            </h3>
+            <h3 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>
+              <span className="option">lil chill:</span>
+              <span className="value chill">{formatTime(settings.chill)}</span>
+            </h3>
+            <h3 className="settings-toggle" onClick={() => dispatch(setChillax("next"))}>
+              <span className="option">big chill:</span>
+              <span className="value chillax">{formatTime(settings.chillax)}</span>
+            </h3>
             {/* <h3 className="settings-toggle">big chill interval: {settings.interval}</h3> */}
             <h3 className="settings-toggle page-control" onClick={() => setPage(1)}>&lt; prev page</h3>
           </>

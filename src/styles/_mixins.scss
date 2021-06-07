@@ -9,6 +9,10 @@
   flex-direction: column;
 }
 
+@mixin text-shadow {
+  text-shadow: 0 0 1rem $dark;
+}
+
 @mixin custom-scrollbar {
   overflow: overlay;
   &::-webkit-scrollbar {

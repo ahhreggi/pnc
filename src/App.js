@@ -34,7 +34,9 @@ const App = () => {
       <section className="display">
         <h2>Pomomilk</h2>
         <Timer />
-        <h3 className="settings-toggle settings" onClick={() => onToggleSettings()}>~ {mode} ~</h3>
+        <h3 className="settings-toggle settings mode" onClick={() => onToggleSettings()}>
+          ~ <span>{mode}</span> ~
+        </h3>
       </section>
       <Settings />
     </main>

@@ -21,7 +21,20 @@
     }
   }
   section.display {
+    margin-bottom: 3rem;
     @include flex-center-col;
+    h3 > span {
+      margin: 0 0.5rem 0.2rem 0.5rem;
+    }
+  }
+  .focus {
+    color: $green;
+  }
+  .chill {
+    color: $yellow;
+  }
+  .chillax {
+    color: $red;
   }
 }
 .theme-red {
@@ -47,4 +60,28 @@
 }
 .theme-grey {
   background-color: $grey;
+}
+.font-red {
+  color: $red;
+}
+.font-orange {
+  color: $orange;
+}
+.font-yellow {
+  color: $yellow;
+}
+.font-green {
+  color: $green;
+}
+.font-blue {
+  color: $blue;
+}
+.font-purple {
+  color: $purple;
+}
+.font-navy {
+  color: $navy;
+}
+.font-grey {
+  color: $grey;
 }
