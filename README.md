@@ -28,6 +28,7 @@
 - Users can customize interval lengths.
 - Users can add extra time, skip, or reset the current step.
 - Users can customize the color theme of the app.
+- Time progression is visualized by milk that dynamically fills up the screen.
 
 <!-- INSTALLATION -->
 
