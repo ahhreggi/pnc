@@ -15,15 +15,14 @@
     background-color: $darkest;
   }
   &.shadow-focus h1 {
-    text-shadow: 5px 5px $green;
+    text-shadow: 4px 4px 1px $green;
   }
   &.shadow-chill h1 {
-    text-shadow: 5px 5px $yellow;
+    text-shadow: 4px 4px 1px $yellow;
   }
   &.shadow-bigChill h1 {
-    text-shadow: 5px 5px $red;
+    text-shadow: 4px 4px 1px $red;
   }
-
   .minutes,
   .seconds,
   .colon {

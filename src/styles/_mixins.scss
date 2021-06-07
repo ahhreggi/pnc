@@ -10,8 +10,9 @@
 }
 
 @mixin text-shadow {
-  text-shadow: 0 0 1rem $dark;
+  text-shadow: 0 0 2px 1px $dark;
 }
+
 @mixin overlay {
   height: 100%;
   width: 100%;
