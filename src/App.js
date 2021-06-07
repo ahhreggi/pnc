@@ -14,8 +14,7 @@ const App = () => {
   const [showAbout, setShowAbout] = useState(false);
 
   // State Management
-  const { theme, mode, step, interval, visible } = useSelector(state => state.settings);
-  const { enabled } = useSelector(state => state.timer);
+  const { theme, mode } = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
   // Component Variables
