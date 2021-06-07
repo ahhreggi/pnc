@@ -13,7 +13,8 @@
   }
   span.option,
   span.value {
-    width: 10rem;
+    min-width: 9rem;
+    flex-wrap: nowrap;
   }
   span.option {
     text-align: right;
