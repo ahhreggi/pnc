@@ -3,7 +3,7 @@ const defaultSettings = {
   theme: "blue",
   focus: 1500,
   chill: 300,
-  chillax: 900,
+  bigChill: 900,
   mode: "focus",
   interval: 4,
   step: 1,
@@ -14,7 +14,7 @@ const options = {
   themes: ["red", "orange", "yellow", "green", "blue", "purple", "navy", "grey"],
   focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600],
   chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600],
-  chillax: [300, 600, 900, 1200, 1500, 1800, 2700, 3300, 3600]
+  bigChill: [300, 600, 900, 1200, 1500, 1800, 2700, 3300, 3600]
 };
 
 const getNext = (current, options) => {
@@ -51,12 +51,12 @@ const settingsReducer = (state = defaultSettings, action) => {
     }
     return { ...state, chill: chill };
   }
-  case "SET_CHILLAX": {
-    let chillax = action.payload;
+  case "SET_BIGCHILL": {
+    let bigChill = action.payload;
     if (action.payload === "next") {
-      chillax = getNext(state.chillax, options.chillax);
+      bigChill = getNext(state.bigChill, options.bigChill);
     }
-    return { ...state, chillax: chillax };
+    return { ...state, bigChill: bigChill };
   }
   case "TOGGLE_AUTOSTART":
     return { ...state, autoStart: !state.autoStart };
@@ -70,7 +70,7 @@ const settingsReducer = (state = defaultSettings, action) => {
     if (step % 2) {
       mode = "focus";
     } else {
-      mode = step < maxSteps ? "chill" : "chillax";
+      mode = step < maxSteps ? "chill" : "bigChill";
     }
     return { ...state, step: step, mode: mode };
   }

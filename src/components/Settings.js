@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, setTimer, startTimer, stopTimer, setTheme, toggleSettings, setFocus, setChill, setChillax, getNextStep } from "../actions";
+import { increaseTimer, setTimer, startTimer, stopTimer, setTheme, toggleSettings, setFocus, setChill, setBigChill, getNextStep } from "../actions";
 import classNames from "classnames";
 import "./Settings.scss";
 
@@ -42,6 +42,16 @@ const Settings = () => {
     return `${time / 60} min`;
   };
 
+  const formatMode = (mode) => {
+    if (mode === "bigChill") {
+      return "big chill";
+    } else if (mode === "chill") {
+      return "lil chill";
+    } else {
+      return "focus";
+    }
+  };
+
   // Component Variables
   const settingsStyles = classNames({
     Settings: true,
@@ -54,7 +64,7 @@ const Settings = () => {
       <h2>Settings</h2>
 
       <h3 className="current">
-        current step: {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{settings.mode}</span>)
+        current step: {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{formatMode(settings.mode)}</span>)
       </h3>
 
       <div className="settings-page">
@@ -80,9 +90,9 @@ const Settings = () => {
               <span className="option">lil chill:</span>
               <span className="value chill">{formatTime(settings.chill)}</span>
             </h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setChillax("next"))}>
+            <h3 className="settings-toggle" onClick={() => dispatch(setBigChill("next"))}>
               <span className="option">big chill:</span>
-              <span className="value chillax">{formatTime(settings.chillax)}</span>
+              <span className="value bigChill">{formatTime(settings.bigChill)}</span>
             </h3>
             <h3 className="settings-toggle page-control" onClick={() => setPage(1)}>&lt; prev page</h3>
           </>

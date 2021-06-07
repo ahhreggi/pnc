@@ -28,6 +28,16 @@ const App = () => {
     dispatch(toggleSettings());
   };
 
+  const formatMode = (mode) => {
+    if (mode === "bigChill") {
+      return "big chill";
+    } else if (mode === "chill") {
+      return "lil chill";
+    } else {
+      return "focus";
+    }
+  };
+
   return (
     <main className={appStyles}>
       <header className="nav">
@@ -38,7 +48,7 @@ const App = () => {
         <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
         <Timer />
         <h3 className="settings-toggle settings mode" onClick={() => onToggleSettings()}>
-          ~ <span>{mode}</span> ~
+          ~ <span>{formatMode(mode)}</span> ~
         </h3>
       </section>
       {showAbout &&

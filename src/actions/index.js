@@ -65,9 +65,9 @@ export const setChill = (option) => {
   };
 };
 
-export const setChillax = (option) => {
+export const setBigChill = (option) => {
   return {
-    type: "SET_CHILLAX",
+    type: "SET_BIGCHILL",
     payload: option
   };
 };
