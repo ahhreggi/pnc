@@ -53,7 +53,7 @@ const App = () => {
       dispatch(getNextStep());
       break;
     case "KeyR":
-      onResetTimer();
+      onResetTimer(settings.mode);
       break;
     case "KeyT":
       dispatch(setTheme("next"));

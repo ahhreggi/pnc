@@ -12,6 +12,8 @@
    » View Live Site «
 </a></b>
 
+<img src="./public/screenshots/pomomilk.gif">
+
 </div>
 
 <!-- INTRODUCTION -->
@@ -55,10 +57,6 @@ The project is live
 4. Visit <a href="http://localhost:3000/">http://localhost:3000/</a> on your browser
 
 ## 📷 Screenshots
-
-<img src="./public/screenshots/focus.png">
 <img src="./public/screenshots/chill.png">
-<img src="./public/screenshots/about.png">
-<img src="./public/screenshots/settings1.png">
 <img src="./public/screenshots/settings2.png">
 <img src="./public/screenshots/help.png">
