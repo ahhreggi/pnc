@@ -30,6 +30,7 @@
 - Users can add extra time, skip, or reset the current step.
 - Time progression is visualized by milk that dynamically fills up the screen.
 - Users can customize the background and milk colors.
+- Setting milk color to "auto" automatically matches it to the current mode.
 
 <!-- INSTALLATION -->
 
@@ -55,8 +56,8 @@ The project is live
 
 ## 📷 Screenshots
 
-<img src="./public/screenshots/chill.png">
 <img src="./public/screenshots/focus.png">
+<img src="./public/screenshots/chill.png">
 <img src="./public/screenshots/about.png">
 <img src="./public/screenshots/settings1.png">
 <img src="./public/screenshots/settings2.png">
