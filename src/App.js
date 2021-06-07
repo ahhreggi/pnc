@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, setTheme, increaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "./actions";
+import { toggleSettings, setTheme, setLiquid, increaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
 import Help from "./components/Help";
+import Milk from "./components/Milk";
 import classNames from "classnames";
 import "./App.scss";
 
@@ -56,6 +57,9 @@ const App = () => {
       break;
     case "KeyT":
       dispatch(setTheme("next"));
+      break;
+    case "KeyY":
+      dispatch(setLiquid("next"));
       break;
     case "Digit1":
       setShowAbout(true);
@@ -140,7 +144,7 @@ const App = () => {
         <Timer />
         <footer onClick={() => onToggleSettings()}>
           <h3 className="settings-toggle mode">
-            ~ <span>{formatMode(settings.mode)}</span> ~
+          ~ <span>{formatMode(settings.mode)}</span> ~
           </h3>
           <h4>
             {settings.step}/{settings.interval * 2}
@@ -148,12 +152,13 @@ const App = () => {
         </footer>
       </section>
       {showAbout &&
-        <About onClose={setShowAbout} />
+      <About onClose={setShowAbout} />
       }
       {showHelp &&
-        <Help onClose={setShowHelp} />
+      <Help onClose={setShowHelp} />
       }
       <Settings />
+      <Milk />
     </main>
   );
 

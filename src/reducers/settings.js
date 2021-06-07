@@ -1,6 +1,7 @@
 const defaultSettings = {
   visible: false,
   theme: "blue",
+  liquid: "white",
   focus: 1500,
   chill: 300,
   bigChill: 900,
@@ -12,6 +13,7 @@ const defaultSettings = {
 
 const options = {
   themes: ["red", "orange", "yellow", "green", "blue", "purple", "navy", "grey"],
+  liquids: ["white", "red", "orange", "yellow", "green", "blue", "purple", "navy", "grey"],
   focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600],
   chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 900],
   bigChill: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600]
@@ -33,6 +35,13 @@ const settingsReducer = (state = defaultSettings, action) => {
       theme = getNext(state.theme, options.themes);
     }
     return { ...state, theme: theme };
+  }
+  case "SET_LIQUID": {
+    let liquid = action.payload;
+    if (action.payload === "next") {
+      liquid = getNext(state.liquid, options.liquids);
+    }
+    return { ...state, liquid: liquid };
   }
   case "SET_MODE": {
     return { ...state, mode: action.payload };

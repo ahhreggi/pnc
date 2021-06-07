@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, setTimer, startTimer, stopTimer, setTheme, toggleSettings, setFocus, setChill, setBigChill, getNextStep } from "../actions";
+import { increaseTimer, setTimer, startTimer, stopTimer, setTheme, setLiquid, toggleSettings, setFocus, setChill, setBigChill, getNextStep } from "../actions";
 import classNames from "classnames";
 import "./Settings.scss";
-
 
 const Settings = () => {
 
@@ -81,8 +80,12 @@ const Settings = () => {
         {page === 2 &&
           <>
             <h3 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
-              <span className="option">theme:</span>
+              <span className="option">bg color:</span>
               <span className={`value font-${settings.theme}`}>{settings.theme}</span>
+            </h3>
+            <h3 className="settings-toggle" onClick={() => dispatch(setLiquid("next"))}>
+              <span className="option">milk color:</span>
+              <span className={`value font-${settings.liquid}`}>{settings.liquid}</span>
             </h3>
             <h3 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
               <span className="option">focus:</span>

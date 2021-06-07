@@ -1,0 +1,82 @@
+@import "../styles/global.scss";
+
+.Milk {
+  .liquid {
+    width: 200vw;
+    opacity: 0.4;
+    left: -50vw;
+    bottom: -100vh;
+    position: fixed;
+    transition: 3s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-timing-function: ease-in-out;
+    box-shadow: 0px 0px 1px 0px $white;
+    &.one {
+      animation: animate 10s infinite;
+    }
+    &.two {
+      animation: animate2 7s infinite;
+    }
+    &.liquid-white {
+      background: linear-gradient($white, transparent);
+    }
+    &.liquid-red {
+      background: linear-gradient($red, $white);
+    }
+    &.liquid-orange {
+      background: linear-gradient($orange, $white);
+    }
+    &.liquid-yellow {
+      background: linear-gradient($yellow, $white);
+    }
+    &.liquid-green {
+      background: linear-gradient($green, $white);
+    }
+    &.liquid-blue {
+      background: linear-gradient($blue, $white);
+    }
+    &.liquid-purple {
+      background: linear-gradient($purple, $white);
+    }
+    &.liquid-navy {
+      background: linear-gradient($navy, $white);
+    }
+    &.liquid-grey {
+      background: linear-gradient($grey, $white);
+    }
+  }
+  @keyframes animate {
+    0% {
+      transform: translate(-5rem, 0px) rotate(-1deg);
+    }
+    25% {
+      transform: translate(-2rem, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-15rem, 1px) rotate(-1deg);
+    }
+    75% {
+      transform: translate(-5rem, -1px) rotate(1deg);
+    }
+    100% {
+      transform: translate(-8rem, 0px) rotate(-1deg);
+    }
+  }
+  @keyframes animate2 {
+    0% {
+      transform: translate(-4rem, 0px) rotate(1deg);
+    }
+    25% {
+      transform: translate(-1rem, -1px) rotate(-1deg);
+    }
+    50% {
+      transform: translate(-5rem, 1px) rotate(1deg);
+    }
+    75% {
+      transform: translate(-2rem, -1px) rotate(-1deg);
+    }
+    100% {
+      transform: translate(-8rem, 0px) rotate(1deg);
+    }
+  }
+}

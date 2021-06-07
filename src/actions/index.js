@@ -38,6 +38,13 @@ export const setTheme = (option) => {
   };
 };
 
+export const setLiquid = (option) => {
+  return {
+    type: "SET_LIQUID",
+    payload: option
+  };
+};
+
 export const toggleSettings = () => {
   return {
     type: "TOGGLE_SETTINGS"

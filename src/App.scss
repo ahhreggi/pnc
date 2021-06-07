@@ -7,6 +7,17 @@
   min-height: 30rem;
   @include flex-center;
   @include custom-scrollbar;
+  header,
+  section,
+  .About,
+  .Help,
+  .Settings {
+    z-index: 1
+  }
+  .background {
+    position: fixed;
+    z-index: 0;
+  }
   .About,
   .Help {
     @include overlay;
@@ -73,8 +84,8 @@
         margin-right: 0;
       }
     }
-    @media screen and (max-width: 780px) {
-      left: auto;
+    @media screen and (max-width: 960px) {
+      // left: 20vw
     }
   }
   section.display {
