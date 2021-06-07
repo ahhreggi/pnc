@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 
 const About = (props) => {
+
   About.propTypes = {
     onClose: PropTypes.func,
   };
+
   return (
     <div className="About">
       <h2>Pomomilk</h2>

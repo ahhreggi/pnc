@@ -13,13 +13,21 @@
     h2 {
       margin-bottom: 2rem;
     }
+    p,
     span.key {
       border: 2px solid $white;
       border-radius: 10px;
-      font-size: 1.5rem;
-      min-width: 4rem;
-      padding: 0.5rem 0.5rem 0.4rem 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      min-width: 1.5rem;
+      display: inline-block;
+      padding: 0.1rem 0.5rem 0rem 0.5rem;
+      line-height: 2rem;
       background-color: rgba(255, 255, 255, 0.25);
+    }
+    p {
+      padding: 1rem;
+      margin: 2rem 0.5rem;
     }
   }
   .About {
@@ -28,6 +36,9 @@
     }
   }
   .Help {
+    h2 {
+      margin-bottom: 1.5rem;
+    }
     h3 {
       margin: 1rem 0 2rem 0;
     }
@@ -61,8 +72,12 @@
     margin: 3rem 0;
     padding: 3rem 0;
     @include flex-center-col;
-    h3 > span {
-      margin: 0 0.5rem 0.2rem 0.5rem;
+    h3.mode {
+      font-size: 3rem;
+      margin-top: 0.5rem;
+      span {
+        margin: 0 0.5rem 0.4rem 0.5rem;
+      }
     }
   }
   .focus {

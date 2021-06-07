@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings } from "./actions";
+import { toggleSettings, setTheme, increaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
 import Help from "./components/Help";
-import { stopTimer } from "./actions";
 import classNames from "classnames";
 import "./App.scss";
-
 
 const App = () => {
 
@@ -16,13 +14,14 @@ const App = () => {
   const [showHelp, setShowHelp] = useState(false);
 
   // State Management
-  const { theme, mode } = useSelector(state => state.settings);
+  const timer = useSelector(state => state.timer);
+  const settings = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
   // Component Variables
   const appStyles = classNames({
     App: true,
-    [`theme-${theme}`]: true
+    [`theme-${settings.theme}`]: true
   });
 
   const onToggleSettings = () => {
@@ -40,6 +39,95 @@ const App = () => {
     }
   };
 
+  const keyHandler = (event) => {
+    // event.preventDefault();
+    switch (event.code) {
+    case "Space":
+      dispatch(timer.enabled ? stopTimer() : startTimer());
+      break;
+    case "KeyA":
+      dispatch(increaseTimer(30));
+      break;
+    case "KeyS":
+      dispatch(getNextStep());
+      break;
+    case "KeyR":
+      onResetTimer();
+      break;
+    case "KeyT":
+      dispatch(setTheme("next"));
+      break;
+    case "Digit1":
+      setShowAbout(true);
+      break;
+    case "Digit2":
+      dispatch(toggleSettings());
+      break;
+    case "Digit3":
+      setShowHelp(true);
+      break;
+    default:
+      return;
+    }
+  };
+
+  const escHandler = (event) => {
+    switch (event.code) {
+    case "Escape":
+      setShowAbout(false);
+      setShowHelp(false);
+      if (settings.visible) {
+        dispatch(toggleSettings());
+      }
+      break;
+    case "Digit1":
+      setShowAbout(!showAbout);
+      if (settings.visible) {
+        dispatch(toggleSettings());
+      }
+      setShowHelp(false);
+      break;
+    case "Digit2":
+      setShowAbout(false);
+      dispatch(toggleSettings());
+      setShowHelp(false);
+      break;
+    case "Digit3":
+      setShowAbout(false);
+      if (settings.visible) {
+        dispatch(toggleSettings());
+      }
+      setShowHelp(!showHelp);
+      break;
+    }
+
+  };
+
+  const onResetTimer = (mode = settings.mode) => {
+    const isEnabled = timer.enabled;
+    const startTime = settings[mode];
+    dispatch(stopTimer());
+    dispatch(setTimer(startTime));
+    if (isEnabled) {
+      dispatch(startTimer());
+    }
+  };
+
+  useEffect(() => {
+    if (!showAbout && !showHelp && !settings.visible) {
+      document.addEventListener("keydown", keyHandler, false);
+      document.removeEventListener("keydown", escHandler, false);
+    } else {
+      dispatch(stopTimer());
+      document.removeEventListener("keydown", keyHandler, false);
+      document.addEventListener("keydown", escHandler, false);
+    }
+    return () => {
+      document.removeEventListener("keydown", keyHandler, false);
+      document.removeEventListener("keydown", escHandler, false);
+    };
+  }, [timer.enabled, showAbout, showHelp, settings.visible]);
+
   return (
     <main className={appStyles}>
       <header className="nav">
@@ -51,8 +139,11 @@ const App = () => {
         <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
         <Timer />
         <h3 className="settings-toggle settings mode" onClick={() => onToggleSettings()}>
-          ~ <span>{formatMode(mode)}</span> ~
+          ~ <span>{formatMode(settings.mode)}</span> ~
         </h3>
+        <h4>
+          {settings.step}/{settings.interval * 2}
+        </h4>
       </section>
       {showAbout &&
         <About onClose={setShowAbout} />

@@ -77,7 +77,6 @@ const settingsReducer = (state = defaultSettings, action) => {
   default:
     return state;
   }
-
 };
 
 export default settingsReducer;
