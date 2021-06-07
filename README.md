@@ -8,8 +8,8 @@
 
 <p>Built with <a href="https://reactjs.org/">React</a> + <a href="https://redux.js.org/">Redux</a>, CSS</a>/<a href="https://sass-lang.com/">Sass</a>, and hosted with <a href="https://www.netlify.com/">Netlify</a></p>
 
-<b><a href="https://ahhreggi-pomomilk.netlify.app/" target="_blank">
-   » View Live Demo «
+<b><a href="http://pomomilk.com/" target="_blank">
+   » View Live Site «
 </a></b>
 
 </div>
@@ -18,7 +18,7 @@
 
 ## 📚 Introduction
 
-<b>[Pomomilk](https://ahhreggi-pomomilk.netlify.app/)</b> is a responsive, single-page interactive pomodoro timer. Users can easily control and configure the auto-cycling timer. The large, customizable display is filled with milk to visualize focus time progression, then similarly drained during breaks.
+<b>[Pomomilk](http://pomomilk.com/)</b> is a responsive, single-page interactive pomodoro timer. Users can easily control and configure the auto-cycling timer. The large, customizable display is filled with milk to visualize focus time progression, then similarly drained during breaks.
 
 > The [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) is a time management method that involves breaking down work into intervals called "pomodoros" (typically 25 min). These are separated by short breaks (3-5 min), with every fourth being a longer break (15-30min).
 
@@ -36,7 +36,7 @@
 ## 🛠 Installation
 
 The project is live
-<b><a href="https://ahhreggi-pomomilk.netlify.app/" target="_blank">here</a></b>, but if you would prefer a local installation:
+<b><a href="http://pomomilk.com/" target="_blank">here</a></b>, but if you would prefer a local installation:
 
 1. Clone or download this repository
    ```
