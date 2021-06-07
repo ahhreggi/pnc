@@ -23,12 +23,13 @@
 > The [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) is a time management method that involves breaking down work into intervals called "pomodoros" (typically 25 min). These are separated by short breaks (3-5 min), with every fourth being a longer break (15-30min).
 
 <!-- FEATURES -->
+
 ## ⭐ Features
 - Users can control the timer via hotkeys or the Settings menu.
 - Users can customize interval lengths.
 - Users can add extra time, skip, or reset the current step.
-- Users can customize the color theme of the app.
 - Time progression is visualized by milk that dynamically fills up the screen.
+- Users can customize the background and milk colors.
 
 <!-- INSTALLATION -->
 
@@ -54,4 +55,9 @@ The project is live
 
 ## 📷 Screenshots
 
-<img src="./public/screenshots/">
+<img src="./public/screenshots/chill.png">
+<img src="./public/screenshots/focus.png">
+<img src="./public/screenshots/about.png">
+<img src="./public/screenshots/settings1.png">
+<img src="./public/screenshots/settings2.png">
+<img src="./public/screenshots/help.png">

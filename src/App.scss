@@ -35,6 +35,8 @@
       padding: 0.1rem 0.5rem 0rem 0.5rem;
       line-height: 2rem;
       background-color: rgba(255, 255, 255, 0.25);
+      text-shadow: 1px 1px 1px $dark;
+      box-shadow: 3px 3px 1px $dark;
     }
     p {
       padding: 1rem;
