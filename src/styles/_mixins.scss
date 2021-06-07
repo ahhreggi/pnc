@@ -19,7 +19,6 @@
   @include flex-center-col;
   backdrop-filter: blur(10px) brightness(55%);
   @include custom-scrollbar;
-  @include text-shadow;
   &.hide {
     display: none;
   }

@@ -30,6 +30,15 @@
       margin: 2rem 0.5rem;
     }
   }
+  .About,
+  .Help,
+  .Settings {
+    h2,
+    h3,
+    h4 {
+      @include text-shadow;
+    }
+  }
   .About {
     h4 {
       margin-top: 0.5rem;
@@ -77,6 +86,18 @@
       margin-top: 0.5rem;
       span {
         margin: 0 0.5rem 0.4rem 0.5rem;
+      }
+    }
+    footer {
+      height: 6rem;
+      cursor: pointer;
+      &:hover {
+        h3 {
+          font-size: 3.2rem;
+        }
+        h4 {
+          font-size: 1.7rem;
+        }
       }
     }
   }

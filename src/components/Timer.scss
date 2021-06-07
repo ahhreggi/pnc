@@ -14,6 +14,16 @@
   &.enabled {
     background-color: $darkest;
   }
+  &.shadow-focus h1 {
+    text-shadow: 5px 5px $green;
+  }
+  &.shadow-chill h1 {
+    text-shadow: 5px 5px $yellow;
+  }
+  &.shadow-bigChill h1 {
+    text-shadow: 5px 5px $red;
+  }
+
   .minutes,
   .seconds,
   .colon {

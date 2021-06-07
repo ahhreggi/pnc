@@ -9,6 +9,7 @@ const Timer = () => {
 
   // State Management
   const { enabled, time } = useSelector(state => state.timer);
+  const { mode } = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +32,8 @@ const Timer = () => {
   // Component Variables
   const timerStyles = classNames({
     Timer: true,
-    enabled: enabled
+    enabled: enabled,
+    [`shadow-${mode}`]: true
   });
   const display = moment(time * 1000).format("mm:ss");
   let [minutes, seconds] = display.split(":");
