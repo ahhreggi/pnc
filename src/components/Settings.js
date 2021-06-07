@@ -68,6 +68,7 @@ const Settings = () => {
       </h3>
 
       <div className="settings-page">
+
         {page === 1 &&
           <>
             <h3 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h3>
@@ -76,6 +77,7 @@ const Settings = () => {
             <h3 className="settings-toggle page-control" onClick={() => setPage(2)}>next page &gt;</h3>
           </>
         }
+
         {page === 2 &&
           <>
             <h3 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
@@ -97,8 +99,8 @@ const Settings = () => {
             <h3 className="settings-toggle page-control" onClick={() => setPage(1)}>&lt; prev page</h3>
           </>
         }
-      </div>
 
+      </div>
 
       <h3 className="settings-toggle close" onClick={() => onCloseSettings()}>close</h3>
     </div>

@@ -9,7 +9,6 @@
   margin-bottom: 0.5rem;
   &:hover {
     cursor: pointer;
-    // filter: brightness(120%);
     background-color: $darkest;
   }
   &.enabled {
@@ -31,5 +30,20 @@
   .colon {
     width: 10%;
     margin: 0 0.5rem;
+  }
+  @media screen and (min-width: 640px) and (max-width: 780px) {
+    zoom: 90%;
+  }
+  @media screen and (min-width: 520px) and (max-width: 640px) {
+    zoom: 80%;
+  }
+  @media screen and (min-width: 400px) and (max-width: 520px) {
+    zoom: 65%;
+  }
+  @media screen and (min-width: 360px) and (max-width: 400px) {
+    zoom: 60%;
+  }
+  @media screen and (max-width: 360px) {
+    zoom: 45%;
   }
 }
