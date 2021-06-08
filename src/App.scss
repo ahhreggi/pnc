@@ -7,24 +7,42 @@
   min-height: 30rem;
   @include flex-center;
   @include custom-scrollbar;
-  header,
-  section,
-  .About,
-  .Help,
-  .Settings {
+
+  .foreground {
     opacity: 0.95;
     z-index: 1;
   }
+
   .background {
     position: fixed;
     z-index: 0;
   }
+
+  /* Overlay Components */
+  .overlay {
+    position: fixed;
+    top: 0;
+
+    h2,
+    h3,
+    h4 {
+      @include text-shadow;
+    }
+
+    .page-control,
+    .close {
+      margin-top: 2rem;
+    }
+  }
+
   .About,
   .Help {
     @include overlay;
+
     h2 {
       margin-bottom: 2rem;
     }
+
     p,
     span.key {
       border: 2px solid $white;
@@ -41,26 +59,18 @@
       box-shadow: 3px 3px 1px $dark;
       margin: 0 0.25rem;
     }
+
     p {
       padding: 1rem;
       margin: 2rem 0.5rem;
     }
   }
-  .About,
-  .Help,
-  .Settings {
-    position: fixed;
-    top: 0;
-    h2,
-    h3,
-    h4 {
-      @include text-shadow;
-    }
-  }
+
   .About {
     h4 {
       margin-top: 0.5rem;
     }
+
     p {
       display: block;
       height: initial;
@@ -69,6 +79,7 @@
       margin: 1rem;
     }
   }
+
   .Help {
     .controls {
       border: 2px solid white;
@@ -77,55 +88,42 @@
       padding: 0.5rem;
       @include custom-scrollbar;
     }
+
     h2 {
       margin-bottom: 1.5rem;
     }
+
     h3 {
       margin: 1rem 0 2rem 0;
     }
+
     h4 {
       font-size: 1.2rem;
       line-height: 2.5rem;
       @include flex-center;
       flex-wrap: nowrap;
     }
+
     span.option,
     span.value {
       min-width: 16rem;
       display: inline-flex;
       flex-wrap: nowrap;
     }
+
     span.option {
       justify-content: flex-end;
       align-items: center;
       margin-right: 1rem;
       min-width: 11rem;
     }
+
     span.value {
       justify-content: flex-start;
     }
   }
-  &.shift-down .Timer {
-    border-color: $white;
-  }
-  &.shift-focus .Timer {
-    h1 {
-      color: $green;
-      text-shadow: 4px 4px 1px $white;
-    }
-  }
-  &.shift-chill .Timer {
-    h1 {
-      color: $yellow;
-      text-shadow: 4px 4px 1px $white;
-    }
-  }
-  &.shift-bigChill .Timer {
-    h1 {
-      color: $red;
-      text-shadow: 4px 4px 1px $white;
-    }
-  }
+
+  /* Nav Bar */
   header.nav {
     position: absolute;
     top: 0;
@@ -134,140 +132,113 @@
     justify-content: space-between;
     padding: 0.5rem;
     width: 17rem;
+
     h4 {
       @include flex-center;
       width: 4rem;
       opacity: 0.8;
+
       &:hover {
         opacity: 1;
       }
+
       &:last-child {
         margin-right: 0;
         margin-left: 0.5rem;
       }
     }
+
+    /* Responsive Styles */
     @media screen and (max-width: 960px) {
       left: auto;
       right: auto;
     }
   }
+
+  /* Main Display */
   section.display {
     margin: 3rem 0;
     padding: 3rem 0;
     @include flex-center-col;
+
     h3.mode {
       font-size: 3rem;
       margin-top: 0.5rem;
+
       span {
         margin: 0 0.5rem 0.4rem 0.5rem;
       }
     }
+
     footer {
       height: 6rem;
       cursor: pointer;
+
       &:hover {
         h3 {
           font-size: 3.2rem;
         }
+
         h4 {
           font-size: 1.7rem;
         }
       }
     }
+
     .alert-container {
       height: 1rem;
       width: fit-content;
-    }
-    .alert {
-      opacity: 0;
-      &.alert-3 {
-        opacity: 1;
-        transform: translateY(5px);
-      }
-      &.alert-2 {
-        opacity: 1;
-        transform: translateY(5px);
-      }
-      &.alert-1 {
+
+      .alert {
         opacity: 0;
-        transition: 0.5s;
-      }
-    }
-    @keyframes fade {
-      0% {
-        opacity: 1;
-        transform: translateY(0px);
-      }
-      40% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-5px);
+
+        &.alert-3 {
+          opacity: 1;
+          transform: translateY(5px);
+        }
+
+        &.alert-2 {
+          opacity: 1;
+          transform: translateY(5px);
+        }
+
+        &.alert-1 {
+          opacity: 0;
+          transition: 0.5s;
+        }
       }
     }
   }
+
   .focus {
     color: $green;
   }
+
   .chill {
     color: $yellow;
   }
+
   .bigChill {
     color: $red;
   }
-}
-.theme-red {
-  background-color: $red;
-}
-.theme-orange {
-  background-color: $orange;
-}
-.theme-yellow {
-  background-color: $yellow;
-}
-.theme-green {
-  background-color: $green;
-}
-.theme-blue {
-  background-color: $blue;
-}
-.theme-purple {
-  background-color: $purple;
-}
-.theme-pink {
-  background-color: $pink;
-}
-.theme-navy {
-  background-color: $navy;
-}
-.theme-grey {
-  background-color: $grey;
-}
-.font-red {
-  color: $red;
-}
-.font-orange {
-  color: $orange;
-}
-.font-yellow {
-  color: $yellow;
-}
-.font-green {
-  color: $green;
-}
-.font-blue {
-  color: $blue;
-}
-.font-purple {
-  color: $purple;
-}
-.font-pink {
-  color: $pink;
-}
-.font-navy {
-  color: $navy;
-}
-.font-grey {
-  color: $grey;
+
+  /* Keypress Styling */
+  &.shift-down .Timer {
+    border-color: $white;
+  }
+
+  &.shift-focus .Timer h1 {
+    color: $green;
+    text-shadow: 4px 4px 1px $white;
+  }
+
+  &.shift-chill .Timer h1 {
+    color: $yellow;
+    text-shadow: 4px 4px 1px $white;
+  }
+
+  &.shift-bigChill .Timer {
+    color: $red;
+    text-shadow: 4px 4px 1px $white;
+  }
 }

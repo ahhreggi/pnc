@@ -50,6 +50,8 @@ const Settings = () => {
   // Component Variables
   const settingsStyles = classNames({
     Settings: true,
+    foreground: true,
+    overlay: true,
     [`theme-${settings.theme}`]: false,
     hide: !settings.visible
   });

@@ -8,52 +8,67 @@
   width: 42rem;
   @include flex-center;
   margin-bottom: 0.5rem;
+
   &:hover {
     cursor: pointer;
     background-color: $darkest;
   }
+
   &.enabled {
     background-color: $darkest;
     border: 5px solid $dark;
   }
+
   &.shadow-focus h1 {
     text-shadow: 4px 4px 1px $green;
   }
+
   &.shadow-chill h1 {
     text-shadow: 4px 4px 1px $yellow;
   }
+
   &.shadow-bigChill h1 {
     text-shadow: 4px 4px 1px $red;
   }
+
   .minutes,
   .seconds,
   .colon {
     @include flex-center;
   }
+
   .minutes {
     justify-content: flex-end;
     width: 40%;
   }
+
   .seconds {
     justify-content: flex-start;
     width: 40%;
   }
+
   .colon {
     width: 10%;
     margin: 0 0.5rem;
   }
+
+  /* Responsive Styles */
   @media screen and (min-width: 640px) and (max-width: 780px) {
     zoom: 90%;
   }
+
   @media screen and (min-width: 520px) and (max-width: 640px) {
     zoom: 80%;
   }
+
   @media screen and (min-width: 400px) and (max-width: 520px) {
     zoom: 65%;
   }
+
   @media screen and (min-width: 360px) and (max-width: 400px) {
     zoom: 60%;
   }
+
   @media screen and (max-width: 360px) {
     zoom: 45%;
   }

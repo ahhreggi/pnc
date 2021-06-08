@@ -7,7 +7,7 @@ const About = (props) => {
   };
 
   return (
-    <div className="About">
+    <div className="About foreground overlay">
       <h2>Pomomilk</h2>
       <h3>A simple interactive pomodoro timer</h3>
       <h4>by Maria Regina Sirilan</h4>

@@ -2,32 +2,106 @@
 @import "./typography";
 @import "./mixins";
 
+/* Header Styles */
 h2.settings-toggle {
   height: 5rem;
   @include flex-center;
+
   &:hover {
     font-size: 4.2rem;
     cursor: pointer;
   }
 }
+
 h3.settings-toggle {
   height: 3rem;
   @include flex-center;
+
   &:hover {
     font-size: 2.1rem;
     cursor: pointer;
   }
 }
+
 h4.settings-toggle {
   height: 2rem;
   @include flex-center;
+
   &:hover {
     font-size: 1.6rem;
     cursor: pointer;
   }
 }
 
-.page-control,
-.close {
-  margin-top: 2rem;
+/* Color Options */
+.theme-red {
+  background-color: $red;
+}
+
+.theme-orange {
+  background-color: $orange;
+}
+
+.theme-yellow {
+  background-color: $yellow;
+}
+
+.theme-green {
+  background-color: $green;
+}
+
+.theme-blue {
+  background-color: $blue;
+}
+
+.theme-purple {
+  background-color: $purple;
+}
+
+.theme-pink {
+  background-color: $pink;
+}
+
+.theme-navy {
+  background-color: $navy;
+}
+
+.theme-grey {
+  background-color: $grey;
+}
+
+.font-red {
+  color: $red;
+}
+
+.font-orange {
+  color: $orange;
+}
+
+.font-yellow {
+  color: $yellow;
+}
+
+.font-green {
+  color: $green;
+}
+
+.font-blue {
+  color: $blue;
+}
+
+.font-purple {
+  color: $purple;
+}
+
+.font-pink {
+  color: $pink;
+}
+
+.font-navy {
+  color: $navy;
+}
+
+.font-grey {
+  color: $grey;
 }

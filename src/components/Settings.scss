@@ -2,24 +2,30 @@
 
 .Settings {
   @include overlay;
+
   h2 {
     margin-bottom: 2rem;
   }
+
   .current {
     margin-bottom: 2rem;
+
     span.value {
       width: 20rem;
     }
   }
+
   span.option,
   span.value {
     min-width: 9rem;
     flex-wrap: nowrap;
   }
+
   span.option {
     text-align: right;
     margin-right: 1rem;
   }
+
   span.value {
     text-align: initial;
   }

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSettings, resetTimer, setTheme, resetTheme, toggleInvert, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
+import "./App.scss";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
 import Help from "./components/Help";
 import Milk from "./components/Milk";
 import classNames from "classnames";
-import "./App.scss";
 
 const App = () => {
 
@@ -279,12 +279,16 @@ const App = () => {
 
   return (
     <main className={appStyles}>
-      <header className="nav">
+
+      {/* Nav Bar */}
+      <header className="nav foreground">
         <h4 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h4>
         <h4 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h4>
         <h4 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h4>
       </header>
-      <section className="display">
+
+      {/* Main Display */}
+      <section className="display foreground">
         <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
         <Timer />
         <footer onClick={() => onToggleSettings()}>
@@ -301,6 +305,8 @@ const App = () => {
           </h4>
         </div>
       </section>
+
+      {/* Overlay Components */}
       {showAbout &&
       <About onClose={setShowAbout} />
       }
@@ -308,9 +314,12 @@ const App = () => {
       <Help onClose={setShowHelp} />
       }
       <Settings />
+
+      {/* Milk Animation */}
       {settings.liquid !== "off" &&
         <Milk />
       }
+
     </main>
   );
 

@@ -8,79 +8,101 @@
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation-timing-function: ease-in-out;
     box-shadow: 0px 0px 1px 0px $white;
+
     &.one {
       animation: animate1 11s infinite;
       left: -150%;
       bottom: -100vh;
       opacity: 0.7;
     }
+
     &.two {
       animation: animate2 13s infinite;
       left: -120%;
       bottom: -100vh;
       opacity: 0.7;
     }
+
     &.liquid-white {
       background: linear-gradient($white, transparent);
     }
+
     &.liquid-red {
       background: linear-gradient($red, $white);
     }
+
     &.liquid-orange {
       background: linear-gradient($orange, $white);
     }
+
     &.liquid-yellow {
       background: linear-gradient($yellow, $white);
     }
+
     &.liquid-green {
       background: linear-gradient($green, $white);
     }
+
     &.liquid-blue {
       background: linear-gradient($blue, $white);
     }
+
     &.liquid-purple {
       background: linear-gradient($purple, $white);
     }
+
     &.liquid-pink {
       background: linear-gradient($pink, $white);
     }
+
     &.liquid-navy {
       background: linear-gradient($navy, $white);
     }
+
     &.liquid-grey {
       background: linear-gradient($grey, $white);
     }
   }
+
   @keyframes animate1 {
     0% {
       transform: translate(-5vw, 8px) rotate(-1deg);
     }
+
     25% {
       transform: translate(2vw, -8px) rotate(1deg);
     }
+
     50% {
       transform: translate(-5vw, 8px) rotate(-1deg);
     }
+
     75% {
       transform: translate(5vw, -8px) rotate(1deg);
     }
+
     100% {
       transform: translate(-8vw, 8px) rotate(-1deg);
     }
   }
+
   @keyframes animate2 {
     0% {
       transform: translate(4vw, -8px) rotate(1deg);
     }
+
     25% {
       transform: translate(-1vw, 8px) rotate(-1deg);
     }
+
     50% {
       transform: translate(5vw, -8px) rotate(1deg);
     }
+
     75% {
       transform: translate(-2vw, 8px) rotate(-1deg);
     }
+
     100% {
       transform: translate(8vw, -8px) rotate(1deg);
     }

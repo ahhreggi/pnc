@@ -7,7 +7,7 @@ const Help = (props) => {
   };
 
   return (
-    <div className="Help">
+    <div className="Help foreground overlay">
       <h2>Quick Controls</h2>
       <div className="controls">
         <h4>
