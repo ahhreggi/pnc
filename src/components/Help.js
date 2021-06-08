@@ -104,7 +104,6 @@ const Help = (props) => {
           </span>
         </h4>
       </div>
-      <h4>These may also be configured via the settings</h4>
       <h3 className="settings-toggle close" onClick={() => props.onClose(false)}>close</h3>
     </div>
   );
