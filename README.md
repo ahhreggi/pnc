@@ -27,14 +27,14 @@
 <!-- FEATURES -->
 
 ## ⭐ Features
-- Users can control the timer via hotkeys or the Settings menu.
+- Users can control the timer via quick control hotkeys or the Settings menu.
 - Users can customize interval lengths.
-- Users can add extra time, skip, or reset the current step.
+- Users can adjust the timer, skip, or reset the current step.
+- Users can toggle timer autostart.
 - Time progression is visualized by milk that dynamically fills up the screen.
 - Users can customize the background and milk colors.
 - Setting milk color to "auto" automatically matches it to the current mode.
 - Setting milk color to "off" disables the time visualization.
-- Users can toggle timer autostart.
 
 <!-- INSTALLATION -->
 
