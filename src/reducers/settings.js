@@ -9,7 +9,8 @@ const defaultSettings = {
   interval: 4,
   step: 1,
   autoStart: true,
-  page: 1
+  page: 1,
+  selection: null
 };
 
 const options = {

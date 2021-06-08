@@ -28,16 +28,10 @@ const Settings = () => {
     }
   };
 
-
   // Stop and reset timer when the mode changes
   useEffect(() => {
     dispatch(resetTimer());
   }, [settings.mode]);
-
-  // // Always show page 1 first when the Settings menu is toggled
-  // useEffect(() => {
-  //   setPage(1);
-  // }, [settings.visible]);
 
   const formatTime = (time) => {
     return `${time / 60} min`;

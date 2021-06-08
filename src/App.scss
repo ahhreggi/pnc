@@ -29,15 +29,17 @@
     span.key {
       border: 2px solid $white;
       border-radius: 10px;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       font-weight: 500;
       min-width: 1.5rem;
-      display: inline-block;
-      padding: 0.1rem 0.5rem 0rem 0.5rem;
-      line-height: 2rem;
+      display: flex;
+      @include flex-center;
+      padding: 0.1rem 0.2rem 0 0.2rem;
+      height: 1.5rem;
       background-color: rgba(255, 255, 255, 0.25);
       text-shadow: 1px 1px 1px $dark;
       box-shadow: 3px 3px 1px $dark;
+      margin: 0 0.25rem;
     }
     p {
       padding: 1rem;
@@ -57,8 +59,21 @@
     h4 {
       margin-top: 0.5rem;
     }
+    p {
+      display: block;
+      height: initial;
+      width: initial;
+      font-size: 1.3rem;
+      margin: 1rem;
+    }
   }
   .Help {
+    .controls {
+      border: 1px solid white;
+      max-height: 70vh;
+      padding: 0.5rem;
+      @include custom-scrollbar;
+    }
     h2 {
       margin-bottom: 1.5rem;
     }
@@ -66,8 +81,26 @@
       margin: 1rem 0 2rem 0;
     }
     h4 {
-      margin: 0.75rem 0;
+      font-size: 1.2rem;
       line-height: 2.5rem;
+      @include flex-center;
+      flex-wrap: nowrap;
+    }
+    span.option,
+    span.value {
+      min-width: 16rem;
+      display: inline-flex;
+      flex-wrap: nowrap;
+      // border: 1px solid yellow;
+    }
+    span.option {
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 1rem;
+      min-width: 11rem;
+    }
+    span.value {
+      justify-content: flex-start;
     }
   }
   header.nav {
@@ -76,6 +109,7 @@
     left: 0.5rem;
     @include flex-center;
     h3 {
+      // border: 1px solid red;
       margin-right: 1.5rem;
       width: 6rem;
       opacity: 0.8;
@@ -84,6 +118,7 @@
       }
       &:last-child {
         width: 4rem;
+        margin-left: 2rem;
         margin-right: 0;
       }
     }

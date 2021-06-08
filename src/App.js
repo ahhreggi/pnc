@@ -115,7 +115,7 @@ const App = () => {
     case "Digit1":
       setShowAbout(true);
       break;
-    case "Digit2":
+    case "Digit2": case "Tab":
       dispatch(toggleSettings());
       break;
     case "Digit3":
@@ -127,6 +127,9 @@ const App = () => {
   };
 
   const escHandler = (event) => {
+    if (event.code === "Tab") {
+      event.preventDefault();
+    }
     switch (event.code) {
     case "Escape":
       setShowAbout(false);
@@ -155,7 +158,6 @@ const App = () => {
       setShowHelp(!showHelp);
       break;
     }
-
   };
 
   useEffect(() => {
@@ -178,7 +180,7 @@ const App = () => {
       <header className="nav">
         <h3 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h3>
         <h3 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h3>
-        <h3 className="settings-toggle" onClick={() => setShowHelp(true)}>help</h3>
+        <h3 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h3>
       </header>
       <section className="display">
         <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
