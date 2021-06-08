@@ -39,7 +39,7 @@ const Help = (props) => {
         </h4>
         <h4>
           <span className="option">
-            <span className="key">Shift</span>+
+            <span className="key">SHIFT</span>+
             <span className="key">W</span>
             <span className="key">S</span>
           </span>
@@ -49,7 +49,7 @@ const Help = (props) => {
         </h4>
         <h4>
           <span className="option">
-            <span className="key">Shift</span>+
+            <span className="key">SHIFT</span>+
             <span className="key">A</span>
             <span className="key">D</span>
           </span>
@@ -59,7 +59,7 @@ const Help = (props) => {
         </h4>
         <h4>
           <span className="option">
-            <span className="key">Shift</span>+
+            <span className="key">SHIFT</span>+
             <span className="key">R</span>
           </span>
           <span className="value">
@@ -78,18 +78,19 @@ const Help = (props) => {
           <span className="option">
             <span className="key">Z</span>
             <span className="key">X</span>
+            <span className="key">C</span>
           </span>
           <span className="value">
-            cycle bg/milk color
+            cycle bg/milk/timer styles
           </span>
         </h4>
         <h4>
           <span className="option">
             <span className="key">SHIFT</span>+
-            <span className="key">C</span>
+            <span className="key">T</span>
           </span>
           <span className="value">
-            reset bg/milk color
+            reset all styles
           </span>
         </h4>
         <h4>

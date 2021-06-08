@@ -14,6 +14,7 @@
   }
   &.enabled {
     background-color: $darkest;
+    border: 5px solid $white;
   }
   &.shadow-focus h1 {
     text-shadow: 4px 4px 1px $green;

@@ -2,6 +2,7 @@ const defaultSettings = {
   visible: false,
   theme: "navy",
   liquid: "auto",
+  invert: false,
   focus: 1500,
   chill: 300,
   bigChill: 900,
@@ -52,7 +53,10 @@ const settingsReducer = (state = defaultSettings, action) => {
     return { ...state, theme: theme };
   }
   case "RESET_THEME": {
-    return { ...state, theme: defaultSettings.theme, liquid: defaultSettings.liquid };
+    return { ...state, theme: defaultSettings.theme, liquid: defaultSettings.liquid, invert: false };
+  }
+  case "TOGGLE_INVERT": {
+    return { ...state, invert: !state.invert };
   }
   case "SET_LIQUID": {
     let liquid = action.payload;

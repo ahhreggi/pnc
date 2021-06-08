@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, toggleInvert, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
@@ -25,14 +25,16 @@ const App = () => {
     App: true,
     [`theme-${settings.theme}`]: true,
     "shift-down": shift,
-    [`shift-${settings.mode}`]: shift
+    [`shift-${settings.mode}`]: settings.invert ? !shift : shift
   });
 
+  // Stop timer when settings are toggled
   const onToggleSettings = () => {
     dispatch(stopTimer());
     dispatch(toggleSettings());
   };
 
+  // Format mode to be displayed
   const formatMode = (mode) => {
     if (mode === "bigChill") {
       return "big chill";
@@ -43,6 +45,7 @@ const App = () => {
     }
   };
 
+  // Set a timeout for the alert display
   useEffect(() => {
     const countdown = setTimeout(() => {
       if (settings.alert) {
@@ -52,26 +55,30 @@ const App = () => {
     return () => clearTimeout(countdown);
   });
 
+  // Set a timeout for the alert message
   useEffect(() => {
     if (settings.alertTimeout === 0) {
       showAlert(null);
     }
   }, [settings.alertTimeout]);
 
+  // Set the alert in state as the given message
   const showAlert = (message) => {
     dispatch(setAlert(message));
   };
 
+  // Handle keydown events
   const keyHandler = (event) => {
-    // event.preventDefault();
+
     if (event.code === "Tab") {
       event.preventDefault();
     }
-    // console.log(event.code);
+
     let key = (event.shiftKey ? "Shift+" : "") + event.code;
 
     switch (key) {
 
+    // Listen for hold on Shift
     case "Shift+ShiftLeft": case "Shift+ShiftRight":
       setShift(true);
       break;
@@ -153,10 +160,16 @@ const App = () => {
       showAlert("changed milk color");
       break;
 
-    // Shift + C: Reset bg + milk to default
-    case "Shift+KeyC":
+    // C: Change timer style
+    case "KeyC":
+      dispatch(toggleInvert());
+      showAlert("changed timer style");
+      break;
+
+    // Shift + T: Reset bg + milk to default
+    case "Shift+KeyT":
       dispatch(resetTheme());
-      showAlert("colors have been reset to default!");
+      showAlert("styles has been reset to default!");
       break;
 
     // 1, 2, 3: Navigate menus
@@ -174,6 +187,7 @@ const App = () => {
     }
   };
 
+  // Handle Escape key events and menu shortcuts
   const escHandler = (event) => {
     if (event.code === "Tab") {
       event.preventDefault();
@@ -208,12 +222,14 @@ const App = () => {
     }
   };
 
+  // Handle Shift key up event
   const keyUpHandler = (event) => {
     if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
       setShift(false);
     }
   };
 
+  // Manage event listeners based on app view
   useEffect(() => {
     if (!showAbout && !showHelp && !settings.visible) {
       document.addEventListener("keydown", keyHandler, false);

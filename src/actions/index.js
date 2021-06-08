@@ -50,6 +50,12 @@ export const resetTheme = () => {
   };
 };
 
+export const toggleInvert = () => {
+  return {
+    type: "TOGGLE_INVERT"
+  };
+};
+
 export const setLiquid = (option) => {
   return {
     type: "SET_LIQUID",
