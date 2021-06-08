@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, resetTimer, setTheme, resetTheme, toggleInvert, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, setAnimation, toggleInvert, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
 import "./App.scss";
 import Timer from "./components/Timer";
 import About from "./components/About";
@@ -175,6 +175,12 @@ const App = () => {
       showAlert("changed timer style");
       break;
 
+    // M: Change timer style
+    case "KeyM":
+      dispatch(setAnimation("next"));
+      showAlert("changed animation style");
+      break;
+
     // Shift + T: Reset bg + milk to default
     case "Shift+KeyT":
       dispatch(resetTheme());
@@ -271,11 +277,7 @@ const App = () => {
     message += ` to ${settings.theme}`;
     break;
   case "changed milk color": {
-    if (settings.liquid === "off") {
-      message = "disabled milk animation";
-    } else {
-      message += ` to ${settings.liquid}`;
-    }
+    message += ` to ${settings.liquid}`;
     break;
   }
   case "changed timer style": {
@@ -284,6 +286,10 @@ const App = () => {
     } else {
       message += " to default";
     }
+    break;
+  }
+  case "changed animation style": {
+    message += ` to ${settings.animation}`;
     break;
   }
   }
@@ -329,7 +335,7 @@ const App = () => {
       <Settings />
 
       {/* Milk Animation */}
-      {settings.liquid !== "off" &&
+      {settings.animation !== "off" &&
         <Milk />
       }
 

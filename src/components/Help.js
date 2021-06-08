@@ -90,6 +90,14 @@ const Help = (props) => {
         </h4>
         <h4>
           <span className="option">
+            <span className="key">M</span>
+          </span>
+          <span className="value">
+            cycle milk animation styles
+          </span>
+        </h4>
+        <h4>
+          <span className="option">
             <span className="key">SHIFT</span>+
             <span className="key">T</span>
           </span>

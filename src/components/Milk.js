@@ -42,7 +42,7 @@ const Milk = () => {
   ///////////////////////////////////////////////////////////////////
 
   return (
-    <div className="Milk">
+    <div className={`Milk ${settings.animation}`}>
       <div className={`liquid one liquid-${color}`} style={height} />
       <div className={`liquid two liquid-${color}`} style={height} />
     </div>

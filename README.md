@@ -34,7 +34,7 @@
 - Time progression is visualized by milk that dynamically fills up the screen.
 - Users can customize the background/milk colors and timer style.
 - Users can set milk color to "auto" to have it change according to the current step.
-- Users can set milk color to "off" to disable the time visualization.
+- Users can set milk animation to "on" , "flat", or "off".
 
 <!-- INSTALLATION -->
 

@@ -63,6 +63,14 @@ export const setLiquid = (option) => {
   };
 };
 
+
+export const setAnimation = (option) => {
+  return {
+    type: "SET_ANIMATION",
+    payload: option
+  };
+};
+
 export const toggleSettings = () => {
   return {
     type: "TOGGLE_SETTINGS"
