@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
@@ -13,6 +13,7 @@ const App = () => {
 
   const [showAbout, setShowAbout] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [shift, setShift] = useState(false);
 
   // State Management
   const timer = useSelector(state => state.timer);
@@ -22,7 +23,9 @@ const App = () => {
   // Component Variables
   const appStyles = classNames({
     App: true,
-    [`theme-${settings.theme}`]: true
+    [`theme-${settings.theme}`]: true,
+    "shift-down": shift,
+    [`shift-${settings.mode}`]: shift
   });
 
   const onToggleSettings = () => {
@@ -40,75 +43,120 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    const countdown = setTimeout(() => {
+      if (settings.alert) {
+        dispatch(countAlert());
+      }
+    }, 500);
+    return () => clearTimeout(countdown);
+  });
+
+  useEffect(() => {
+    if (settings.alertTimeout === 0) {
+      showAlert(null);
+    }
+  }, [settings.alertTimeout]);
+
+  const showAlert = (message) => {
+    dispatch(setAlert(message));
+  };
+
   const keyHandler = (event) => {
     // event.preventDefault();
     if (event.code === "Tab") {
       event.preventDefault();
     }
-    // console.log(event);
+    // console.log(event.code);
     let key = (event.shiftKey ? "Shift+" : "") + event.code;
+
     switch (key) {
+
+    case "Shift+ShiftLeft": case "Shift+ShiftRight":
+      setShift(true);
+      break;
 
     // SPACEBAR: Timer start/stop
     case "Space":
-      dispatch(timer.enabled ? stopTimer() : startTimer());
+      if (timer.enabled) {
+        dispatch(stopTimer());
+        showAlert("timer stopped");
+      } else {
+        dispatch(startTimer());
+        showAlert("timer started");
+      }
       break;
 
     // WASD/Arrow Keys: Adjust current timer
-    case "KeyW": case "ArrowUp":
+    case "KeyW": case "ArrowUp": {
       dispatch(increaseTimer(1));
+      showAlert("+1 sec");
       break;
+    }
     case "KeyS": case "ArrowDown":
       dispatch(decreaseTimer(1));
+      showAlert("-1 sec");
       break;
     case "KeyA": case "ArrowLeft":
       dispatch(decreaseTimer(60));
+      showAlert("-1 min");
       break;
     case "KeyD": case "ArrowRight":
       dispatch(increaseTimer(60));
+      showAlert("+1 min");
       break;
 
     // R: Reset current timer
     case "KeyR":
       dispatch(resetTimer());
+      showAlert("timer restarted");
       break;
 
     // Shift + (WASD/Arrow Keys): Adjust intervals, current step
     case "Shift+KeyW": case "Shift+ArrowUp":
       dispatch(adjustInterval(1));
+      showAlert("interval increased");
       break;
     case "Shift+KeyS": case "Shift+ArrowDown":
       dispatch(adjustInterval(-1));
+      showAlert("interval decreased");
       break;
     case "Shift+KeyA": case "Shift+ArrowLeft":
       dispatch(getNextStep(-1));
+      showAlert("moved to previous step");
       break;
     case "Shift+KeyD": case "Shift+ArrowRight":
       dispatch(getNextStep(1));
+      showAlert("moved to next step");
       break;
 
     // Shift + R: Reset current interval to default
     case "Shift+KeyR":
       dispatch(resetInterval());
       dispatch(resetTimer());
+      showAlert(`${settings.mode} interval has been reset to default!`);
       break;
 
     // Q: Toggle autostart
     case "KeyQ":
+      showAlert("autostart");
       dispatch(toggleAutoStart());
       break;
 
     // Z, X: Change bg, milk color
     case "KeyZ":
       dispatch(setTheme("next"));
+      showAlert("changed bg color");
       break;
     case "KeyX":
       dispatch(setLiquid("next"));
+      showAlert("changed milk color");
       break;
 
     // Shift + C: Reset bg + milk to default
     case "Shift+KeyC":
       dispatch(resetTheme());
+      showAlert("colors have been reset to default!");
       break;
 
     // 1, 2, 3: Navigate menus
@@ -160,27 +208,55 @@ const App = () => {
     }
   };
 
+  const keyUpHandler = (event) => {
+    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
+      setShift(false);
+    }
+  };
+
   useEffect(() => {
     if (!showAbout && !showHelp && !settings.visible) {
       document.addEventListener("keydown", keyHandler, false);
       document.removeEventListener("keydown", escHandler, false);
+      document.addEventListener("keyup", keyUpHandler, false);
     } else {
       dispatch(stopTimer());
       document.removeEventListener("keydown", keyHandler, false);
       document.addEventListener("keydown", escHandler, false);
+      document.removeEventListener("keyup", keyUpHandler, false);
     }
     return () => {
       document.removeEventListener("keydown", keyHandler, false);
       document.removeEventListener("keydown", escHandler, false);
+      document.removeEventListener("keyup", keyUpHandler, false);
     };
   }, [timer.enabled, showAbout, showHelp, settings.visible]);
+
+  // Construct alert message
+  let message = settings.alert;
+  switch (message) {
+  case "autostart":
+    message += settings.autoStart ? " enabled" : " disabled";
+    break;
+  case "changed bg color":
+    message += ` to ${settings.theme}`;
+    break;
+  case "changed milk color": {
+    if (settings.liquid === "off") {
+      message = "disabled milk animation";
+    } else {
+      message += ` to ${settings.liquid}`;
+    }
+    break;
+  }
+  }
 
   return (
     <main className={appStyles}>
       <header className="nav">
-        <h3 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h3>
-        <h3 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h3>
-        <h3 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h3>
+        <h4 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h4>
+        <h4 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h4>
+        <h4 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h4>
       </header>
       <section className="display">
         <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
@@ -193,6 +269,11 @@ const App = () => {
             {settings.step}/{settings.interval * 2}
           </h4>
         </footer>
+        <div className="alert-container">
+          <h4 className={`alert ${settings.alert ? "show" : ""} alert-${settings.alertTimeout}`}>
+            {message}
+          </h4>
+        </div>
       </section>
       {showAbout &&
       <About onClose={setShowAbout} />

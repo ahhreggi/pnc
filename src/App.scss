@@ -105,22 +105,39 @@
       justify-content: flex-start;
     }
   }
+  &.shift-down .Timer {
+    border: 5px solid $white;
+    h1 {
+      text-shadow: 4px 4px 1px $white;
+    }
+  }
+  &.shift-focus .Timer h1 {
+    color: $green;
+  }
+  &.shift-chill .Timer h1 {
+    color: $yellow;
+  }
+  &.shift-bigChill .Timer h1 {
+    color: $red;
+  }
   header.nav {
     position: absolute;
     top: 0;
     left: 0.5rem;
     @include flex-center;
-    h3 {
-      margin-right: 1.5rem;
-      width: 6rem;
+    justify-content: space-between;
+    padding: 0.5rem;
+    width: 17rem;
+    h4 {
+      @include flex-center;
+      width: 4rem;
       opacity: 0.8;
       &:hover {
         opacity: 1;
       }
       &:last-child {
-        width: 4rem;
-        margin-left: 2rem;
         margin-right: 0;
+        margin-left: 0.5rem;
       }
     }
     @media screen and (max-width: 960px) {
@@ -149,6 +166,38 @@
         h4 {
           font-size: 1.7rem;
         }
+      }
+    }
+    .alert-container {
+      height: 1rem;
+      width: fit-content;
+    }
+    .alert {
+      opacity: 0;
+      &.alert-3 {
+        opacity: 1;
+        transform: translateY(5px);
+      }
+      &.alert-2 {
+        opacity: 1;
+        transform: translateY(5px);
+      }
+      &.alert-1 {
+        opacity: 0;
+        transition: 0.5s;
+      }
+    }
+    @keyframes fade {
+      0% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+      40% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-5px);
       }
     }
   }

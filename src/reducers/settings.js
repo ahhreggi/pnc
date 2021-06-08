@@ -10,23 +10,25 @@ const defaultSettings = {
   step: 1,
   autoStart: true,
   page: 1,
-  selection: null
+  selection: null,
+  alert: null,
+  alertTimeout: 3
 };
 
 const options = {
   themes: ["red", "orange", "yellow", "green", "blue", "purple", "pink", "navy", "grey"],
   liquids: ["white", "red", "orange", "yellow", "green", "blue", "purple", "pink", "navy", "grey", "auto", "off"],
-  focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600],
-  chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 900],
-  bigChill: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600]
+  focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600],
+  chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 900, 1200, 1500, 1800],
+  bigChill: [300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600]
 };
 
-const getNext = (current, options, steps = 1) => {
+const getNext = (current, options, steps = 1, wrap = true) => {
   let index = options.indexOf(current) + steps;
   if (index < 0) {
-    index = options.length - 1;
+    index = wrap ? options.length - 1 : 0;
   } else if (index > options.length - 1) {
-    index = 0;
+    index = wrap ? 0 : options.length - 1;
   }
   return options[index];
 };
@@ -85,7 +87,7 @@ const settingsReducer = (state = defaultSettings, action) => {
   }
   case "ADJUST_INTERVAL": {
     const interval = state.mode;
-    const newValue = getNext(state[interval], options[interval], action.payload);
+    const newValue = getNext(state[interval], options[interval], action.payload, false);
     return { ...state, [interval]: newValue };
   }
   case "RESET_INTERVAL": {
@@ -109,6 +111,13 @@ const settingsReducer = (state = defaultSettings, action) => {
       mode = step < maxSteps ? "chill" : "bigChill";
     }
     return { ...state, step: step, mode: mode };
+  }
+  case "SET_ALERT":
+    return { ...state, alert: action.payload, alertTimeout: 3 };
+  case "COUNT_ALERT": {
+    const timeout = state.alertTimeout - 1;
+    const alert = timeout ? state.alert : null;
+    return { ...state, alert: alert, alertTimeout: timeout >= 0 ? timeout : 0 };
   }
   default:
     return state;

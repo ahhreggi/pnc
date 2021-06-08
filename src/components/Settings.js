@@ -97,7 +97,7 @@ const Settings = () => {
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
               <span className="option">autostart:</span>
-              <span className={`value font-${settings.autoStart ? "green" : "red"}`}>{settings.autoStart ? "enabled" : "disabled"}</span>
+              <span className="value">{settings.autoStart ? "enabled" : "disabled"}</span>
             </h4>
             <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>&lt; prev page</h4>
           </>

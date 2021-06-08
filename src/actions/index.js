@@ -122,3 +122,17 @@ export const getNextStep = (option = 1) => {
     payload: option
   };
 };
+
+export const setAlert = (message) => {
+  return {
+    type: "SET_ALERT",
+    payload: message
+  };
+};
+
+export const countAlert = (message) => {
+  return {
+    type: "COUNT_ALERT",
+    payload: message
+  };
+};
