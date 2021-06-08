@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, setTimer, resetTimer, startTimer, stopTimer, setTheme, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep } from "../actions";
+import { increaseTimer, setTimer, resetTimer, startTimer, stopTimer, setTheme, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart } from "../actions";
 import classNames from "classnames";
 import "./Settings.scss";
 
@@ -58,44 +58,48 @@ const Settings = () => {
     <div className={settingsStyles}>
       <h2>Settings</h2>
 
-      <h3 className="current">
+      <h4 className="current">
         current step: {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{formatMode(settings.mode)}</span>)
-      </h3>
+      </h4>
 
       <div className="settings-page">
 
         {settings.page === 1 &&
           <>
-            <h3 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h3>
-            <h3 className="settings-toggle font-yellow" onClick={() => dispatch(getNextStep())}>skip current step</h3>
-            <h3 className="settings-toggle font-red" onClick={() =>     dispatch(resetTimer())}>reset current step</h3>
-            <h3 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>next page &gt;</h3>
+            <h4 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h4>
+            <h4 className="settings-toggle font-yellow" onClick={() => dispatch(getNextStep())}>skip current step</h4>
+            <h4 className="settings-toggle font-red" onClick={() =>     dispatch(resetTimer())}>reset current step</h4>
+            <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>next page &gt;</h4>
           </>
         }
 
         {settings.page === 2 &&
           <>
-            <h3 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
+            <h4 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
               <span className="option">bg color:</span>
               <span className={`value font-${settings.theme}`}>{settings.theme}</span>
-            </h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setLiquid("next"))}>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(setLiquid("next"))}>
               <span className="option">milk color:</span>
               <span className={`value font-${settings.liquid}`}>{settings.liquid}</span>
-            </h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
               <span className="option">focus:</span>
               <span className="value focus">{formatTime(settings.focus)}</span>
-            </h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>
               <span className="option">lil chill:</span>
               <span className="value chill">{formatTime(settings.chill)}</span>
-            </h3>
-            <h3 className="settings-toggle" onClick={() => dispatch(setBigChill("next"))}>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(setBigChill("next"))}>
               <span className="option">big chill:</span>
               <span className="value bigChill">{formatTime(settings.bigChill)}</span>
-            </h3>
-            <h3 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>&lt; prev page</h3>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
+              <span className="option">autostart:</span>
+              <span className={`value font-${settings.autoStart ? "green" : "red"}`}>{settings.autoStart ? "enabled" : "disabled"}</span>
+            </h4>
+            <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>&lt; prev page</h4>
           </>
         }
 

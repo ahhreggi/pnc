@@ -89,7 +89,7 @@ const Help = (props) => {
             <span className="key">C</span>
           </span>
           <span className="value">
-            reset bg/milk color to default
+            reset bg/milk color
           </span>
         </h4>
         <h4>

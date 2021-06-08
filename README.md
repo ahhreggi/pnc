@@ -33,7 +33,7 @@
 - Time progression is visualized by milk that dynamically fills up the screen.
 - Users can customize the background and milk colors.
 - Setting milk color to "auto" automatically matches it to the current mode.
-- Users can toggle interval autostart.
+- Users can toggle step autostart.
 
 <!-- INSTALLATION -->
 

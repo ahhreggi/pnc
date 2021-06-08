@@ -34,7 +34,7 @@
       min-width: 1.5rem;
       display: flex;
       @include flex-center;
-      padding: 0.1rem 0.2rem 0 0.2rem;
+      padding: 0.1rem 0.25rem 0 0.25rem;
       height: 1.5rem;
       background-color: rgba(255, 255, 255, 0.25);
       text-shadow: 1px 1px 1px $dark;
@@ -49,6 +49,8 @@
   .About,
   .Help,
   .Settings {
+    position: fixed;
+    top: 0;
     h2,
     h3,
     h4 {
@@ -69,7 +71,8 @@
   }
   .Help {
     .controls {
-      border: 1px solid white;
+      border: 2px solid white;
+      border-radius: 5px;
       max-height: 70vh;
       padding: 0.5rem;
       @include custom-scrollbar;

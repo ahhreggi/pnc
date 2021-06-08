@@ -28,8 +28,8 @@
 @mixin custom-scrollbar {
   overflow: overlay;
   &::-webkit-scrollbar {
-    height: 0.5rem;
-    width: 0.5rem;
+    height: 0.25rem;
+    width: 0.25rem;
   }
   &::-webkit-scrollbar-track {
     background-color: transparent;
