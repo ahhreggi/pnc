@@ -171,7 +171,7 @@ const App = () => {
     // Shift + T: Reset bg + milk to default
     case "Shift+KeyT":
       dispatch(resetTheme());
-      showAlert("styles has been reset to default!");
+      showAlert("styles have been reset to default!");
       break;
 
     // 1, 2, 3: Navigate menus
