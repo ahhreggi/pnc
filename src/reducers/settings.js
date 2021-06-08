@@ -38,7 +38,7 @@ const settingsReducer = (state = defaultSettings, action) => {
     if (state.visible) {
       page = 1;
     }
-    return { ...state, visible: !state.visible, page: 1 };
+    return { ...state, visible: !state.visible, page: page };
   }
   case "TOGGLE_PAGE":
     return { ...state, page: state.page === 1 ? 2 : 1 };

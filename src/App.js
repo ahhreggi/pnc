@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, setTimer, startTimer, stopTimer, getNextStep, toggleAutoStart } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";

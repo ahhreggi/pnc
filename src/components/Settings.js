@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, setTimer, resetTimer, startTimer, stopTimer, setTheme, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart } from "../actions";
+import { increaseTimer, resetTimer, setTheme, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart } from "../actions";
 import classNames from "classnames";
 import "./Settings.scss";
 

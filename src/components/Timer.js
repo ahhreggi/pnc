@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decreaseTimer, resetTimer, setTimer, startTimer, stopTimer, getNextStep } from "../actions";
+import { decreaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Timer.scss";
