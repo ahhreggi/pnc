@@ -65,7 +65,7 @@ const settingsReducer = (state = defaultSettings, action) => {
     return { ...state, theme: theme };
   }
   case "RESET_THEME": {
-    return { ...state, theme: defaultSettings.theme, liquid: defaultSettings.liquid, invert: false };
+    return { ...state, theme: defaultSettings.theme, liquid: defaultSettings.liquid, invert: false, animation: "on" };
   }
   case "TOGGLE_INVERT": {
     return { ...state, invert: !state.invert };
