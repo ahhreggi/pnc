@@ -1,26 +1,28 @@
 @import "../styles/global.scss";
 
 .Milk {
+
   .liquid {
     width: 300%;
     position: fixed;
     transition: 3s;
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation-timing-function: ease-in-out;
+    transition-timing-function: cubic-bezier(0, 0, 0, 1.2);
+    animation-timing-function: cubic-bezier(0, 0, 0, 1.2);
     box-shadow: 0px 0px 1px 0px $white;
 
     &.one {
-      animation: animate1 11s infinite;
-      left: -150%;
-      bottom: -100vh;
+      animation: animate 6s infinite;
+      left: -100vw;
       opacity: 0.7;
-    }
+      bottom: -100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
 
-    &.two {
-      animation: animate2 13s infinite;
-      left: -120%;
-      bottom: -100vh;
-      opacity: 0.7;
+      &.two {
+        bottom: -99vh;
+        animation-delay: 1s;
+      }
     }
 
     &.liquid-white {
@@ -63,56 +65,37 @@
       background: linear-gradient($grey, $white);
     }
   }
-
+  &.off {
+    display: none;
+  }
+  &.loading {
+    .liquid {
+      &.one,
+      &.two {
+        bottom: -200vh;
+      }
+    }
+  }
   &.flat {
     .liquid {
       animation: none;
-      transition: 1s;
+      transition: 2s;
       transition-timing-function: linear;
+      opacity: 1;
     }
   }
 
-  @keyframes animate1 {
+  @keyframes animate {
     0% {
-      transform: translate(-5vw, 8px) rotate(-1deg);
-    }
-
-    25% {
-      transform: translate(2vw, -8px) rotate(1deg);
+      transform: translateX(-15vw) rotate(-1deg);
     }
 
     50% {
-      transform: translate(-5vw, 8px) rotate(-1deg);
-    }
-
-    75% {
-      transform: translate(5vw, -8px) rotate(1deg);
+      transform: translateX(15vw) rotate(1deg);
     }
 
     100% {
-      transform: translate(-8vw, 8px) rotate(-1deg);
-    }
-  }
-
-  @keyframes animate2 {
-    0% {
-      transform: translate(4vw, -8px) rotate(1deg);
-    }
-
-    25% {
-      transform: translate(-1vw, 8px) rotate(-1deg);
-    }
-
-    50% {
-      transform: translate(5vw, -8px) rotate(1deg);
-    }
-
-    75% {
-      transform: translate(-2vw, 8px) rotate(-1deg);
-    }
-
-    100% {
-      transform: translate(8vw, -8px) rotate(1deg);
+      transform: translateX(-15vw) rotate(-1deg);
     }
   }
 }

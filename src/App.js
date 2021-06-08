@@ -335,9 +335,7 @@ const App = () => {
       <Settings />
 
       {/* Milk Animation */}
-      {settings.animation !== "off" &&
-        <Milk />
-      }
+      <Milk />
 
     </main>
   );
