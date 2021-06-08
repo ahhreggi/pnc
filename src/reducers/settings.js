@@ -19,9 +19,13 @@ const options = {
   bigChill: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600]
 };
 
-const getNext = (current, options) => {
-  let index = options.indexOf(current);
-  index = index === options.length - 1 ? 0 : index + 1;
+const getNext = (current, options, steps = 1) => {
+  let index = options.indexOf(current) + steps;
+  if (index < 0) {
+    index = options.length - 1;
+  } else if (index > options.length - 1) {
+    index = 0;
+  }
   return options[index];
 };
 
@@ -35,6 +39,9 @@ const settingsReducer = (state = defaultSettings, action) => {
       theme = getNext(state.theme, options.themes);
     }
     return { ...state, theme: theme };
+  }
+  case "RESET_THEME": {
+    return { ...state, theme: defaultSettings.theme, liquid: defaultSettings.liquid };
   }
   case "SET_LIQUID": {
     let liquid = action.payload;
@@ -67,14 +74,25 @@ const settingsReducer = (state = defaultSettings, action) => {
     }
     return { ...state, bigChill: bigChill };
   }
+  case "ADJUST_INTERVAL": {
+    const interval = state.mode;
+    const newValue = getNext(state[interval], options[interval], action.payload);
+    return { ...state, [interval]: newValue };
+  }
+  case "RESET_INTERVAL": {
+    const interval = state.mode;
+    return { ...state, [interval]: defaultSettings[interval] };
+  }
   case "TOGGLE_AUTOSTART":
     return { ...state, autoStart: !state.autoStart };
   case "NEXT_STEP": {
-    let step = state.step + 1;
+    let step = state.step + action.payload;
     const maxSteps = state.interval * 2;
     let mode;
     if (step > maxSteps) {
       step = 1;
+    } else if (step < 1) {
+      step = maxSteps;
     }
     if (step % 2) {
       mode = "focus";

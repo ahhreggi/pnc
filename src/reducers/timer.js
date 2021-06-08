@@ -1,5 +1,6 @@
 const defaultTimer = {
   enabled: false,
+  startTime: 1500,
   time: 1500
 };
 
@@ -14,7 +15,9 @@ const timerReducer = (state = defaultTimer, action) => {
     return { ...state, time: time >= 0 ? time : 0 };
   }
   case "SET_TIMER":
-    return { ...state, time: action.payload };
+    return { ...state, enabled: false, startTime: action.payload, time: action.payload };
+  case "RESET_TIMER":
+    return { ...state, time: state.startTime };
   case "START_TIMER":
     return { ...state, enabled: true };
   case "STOP_TIMER":

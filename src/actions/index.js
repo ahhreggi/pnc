@@ -19,6 +19,12 @@ export const setTimer = (seconds) => {
   };
 };
 
+export const resetTimer = () => {
+  return {
+    type: "RESET_TIMER"
+  };
+};
+
 export const startTimer = () => {
   return {
     type: "START_TIMER"
@@ -35,6 +41,12 @@ export const setTheme = (option) => {
   return {
     type: "SET_THEME",
     payload: option
+  };
+};
+
+export const resetTheme = () => {
+  return {
+    type: "RESET_THEME"
   };
 };
 
@@ -79,14 +91,28 @@ export const setBigChill = (option) => {
   };
 };
 
+export const adjustInterval = (option) => {
+  return {
+    type: "ADJUST_INTERVAL",
+    payload: option
+  };
+};
+
+export const resetInterval = () => {
+  return {
+    type: "RESET_INTERVAL"
+  };
+};
+
 export const toggleAutoStart = () => {
   return {
     type: "TOGGLE_AUTOSTART"
   };
 };
 
-export const getNextStep = () => {
+export const getNextStep = (option = 1) => {
   return {
-    type: "NEXT_STEP"
+    type: "NEXT_STEP",
+    payload: option
   };
 };

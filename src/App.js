@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, setTheme, setLiquid, increaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, setTimer, startTimer, stopTimer, getNextStep } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
@@ -42,24 +42,55 @@ const App = () => {
 
   const keyHandler = (event) => {
     // event.preventDefault();
-    switch (event.code) {
+    // console.log(event);
+    let key = (event.shiftKey ? "Shift+" : "") + event.code;
+    switch (key) {
+
     case "Space":
       dispatch(timer.enabled ? stopTimer() : startTimer());
       break;
-    case "KeyA":
-      dispatch(increaseTimer(30));
+
+    case "KeyW": case "ArrowUp":
+      dispatch(increaseTimer(1));
       break;
-    case "KeyS":
-      dispatch(getNextStep());
+    case "KeyS": case "ArrowDown":
+      dispatch(decreaseTimer(1));
+      break;
+    case "KeyA": case "ArrowLeft":
+      dispatch(decreaseTimer(60));
+      break;
+    case "KeyD": case "ArrowRight":
+      dispatch(increaseTimer(60));
       break;
     case "KeyR":
-      onResetTimer(settings.mode);
+      dispatch(resetTimer());
       break;
-    case "KeyT":
+
+    case "Shift+KeyW": case "Shift+ArrowUp":
+      dispatch(adjustInterval(1));
+      break;
+    case "Shift+KeyS": case "Shift+ArrowDown":
+      dispatch(adjustInterval(-1));
+      break;
+    case "Shift+KeyA": case "Shift+ArrowLeft":
+      dispatch(getNextStep(-1));
+      break;
+    case "Shift+KeyD": case "Shift+ArrowRight":
+      dispatch(getNextStep(1));
+      break;
+    case "Shift+KeyR":
+      dispatch(resetInterval());
+      dispatch(resetTimer());
+      break;
+
+    case "KeyZ":
       dispatch(setTheme("next"));
       break;
-    case "KeyY":
+    case "KeyX":
       dispatch(setLiquid("next"));
+      break;
+    case "Shift+KeyC":
+      dispatch(resetTheme());
       break;
     case "Digit1":
       setShowAbout(true);
@@ -105,16 +136,6 @@ const App = () => {
       break;
     }
 
-  };
-
-  const onResetTimer = (mode = settings.mode) => {
-    const isEnabled = timer.enabled;
-    const startTime = settings[mode];
-    dispatch(stopTimer());
-    dispatch(setTimer(startTime));
-    if (isEnabled) {
-      dispatch(startTimer());
-    }
   };
 
   useEffect(() => {

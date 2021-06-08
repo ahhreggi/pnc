@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, setTimer, startTimer, stopTimer, setTheme, setLiquid, toggleSettings, setFocus, setChill, setBigChill, getNextStep } from "../actions";
+import { increaseTimer, setTimer, resetTimer, startTimer, stopTimer, setTheme, setLiquid, toggleSettings, setFocus, setChill, setBigChill, getNextStep } from "../actions";
 import classNames from "classnames";
 import "./Settings.scss";
 
@@ -10,32 +10,17 @@ const Settings = () => {
 
   // State Management
   const settings = useSelector(state => state.settings);
-  const timer = useSelector(state => state.timer);
   const dispatch = useDispatch();
-
-  const onResetTimer = (mode = settings.mode) => {
-    const isEnabled = timer.enabled;
-    const startTime = settings[mode];
-    dispatch(stopTimer());
-    dispatch(setTimer(startTime));
-    if (isEnabled) {
-      dispatch(startTimer());
-    }
-  };
-
-  const onSkipTimer = () => {
-    dispatch(getNextStep());
-  };
-
-  const onCloseSettings = () => {
-    dispatch(toggleSettings());
-    setPage(1);
-  };
 
   // Stop and reset timer when the mode changes
   useEffect(() => {
-    onResetTimer(settings.mode);
+    dispatch(resetTimer());
   }, [settings.mode]);
+
+  // Always show page 1 first when the Settings menu is toggled
+  useEffect(() => {
+    setPage(1);
+  }, [settings.visible]);
 
   const formatTime = (time) => {
     return `${time / 60} min`;
@@ -71,8 +56,8 @@ const Settings = () => {
         {page === 1 &&
           <>
             <h3 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h3>
-            <h3 className="settings-toggle font-yellow" onClick={() => onSkipTimer()}>skip current step</h3>
-            <h3 className="settings-toggle font-red" onClick={() => onResetTimer()}>reset current step</h3>
+            <h3 className="settings-toggle font-yellow" onClick={() => dispatch(getNextStep())}>skip current step</h3>
+            <h3 className="settings-toggle font-red" onClick={() =>     dispatch(resetTimer())}>reset current step</h3>
             <h3 className="settings-toggle page-control" onClick={() => setPage(2)}>next page &gt;</h3>
           </>
         }
@@ -105,7 +90,7 @@ const Settings = () => {
 
       </div>
 
-      <h3 className="settings-toggle close" onClick={() => onCloseSettings()}>close</h3>
+      <h3 className="settings-toggle close" onClick={() => dispatch(toggleSettings())}>close</h3>
     </div>
   );
 
