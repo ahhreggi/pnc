@@ -15,7 +15,7 @@ const Timer = () => {
   // If the mode changes, update timer state
   useEffect(() => {
     const startTime = settings[settings.mode];
-    const autoStart = enabled;
+    const autoStart = settings.autoStart;
     dispatch(setTimer(startTime));
     if (autoStart) {
       dispatch(startTimer());

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, setTimer, startTimer, stopTimer, getNextStep } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, setTimer, startTimer, stopTimer, getNextStep, toggleAutoStart } from "./actions";
 import Timer from "./components/Timer";
 import About from "./components/About";
 import Settings from "./components/Settings";
@@ -46,10 +46,12 @@ const App = () => {
     let key = (event.shiftKey ? "Shift+" : "") + event.code;
     switch (key) {
 
+    // SPACEBAR: Timer start/stop
     case "Space":
       dispatch(timer.enabled ? stopTimer() : startTimer());
       break;
 
+    // WASD/Arrow Keys: Adjust current timer
     case "KeyW": case "ArrowUp":
       dispatch(increaseTimer(1));
       break;
@@ -62,10 +64,13 @@ const App = () => {
     case "KeyD": case "ArrowRight":
       dispatch(increaseTimer(60));
       break;
+
+    // R: Reset current timer
     case "KeyR":
       dispatch(resetTimer());
       break;
 
+    // Shift + (WASD/Arrow Keys): Adjust intervals, current step
     case "Shift+KeyW": case "Shift+ArrowUp":
       dispatch(adjustInterval(1));
       break;
@@ -78,20 +83,32 @@ const App = () => {
     case "Shift+KeyD": case "Shift+ArrowRight":
       dispatch(getNextStep(1));
       break;
+
+    // Shift + R: Reset current interval to default
     case "Shift+KeyR":
       dispatch(resetInterval());
       dispatch(resetTimer());
       break;
 
+    // Q: Toggle autostart
+    case "KeyQ":
+      dispatch(toggleAutoStart());
+      break;
+
+    // Z, X: Change bg, milk color
     case "KeyZ":
       dispatch(setTheme("next"));
       break;
     case "KeyX":
       dispatch(setLiquid("next"));
       break;
+
+    // Shift + C: Reset bg + milk to default
     case "Shift+KeyC":
       dispatch(resetTheme());
       break;
+
+    // 1, 2, 3: Navigate menus
     case "Digit1":
       setShowAbout(true);
       break;
