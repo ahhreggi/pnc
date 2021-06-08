@@ -24,6 +24,7 @@ const options = {
   bigChill: [300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600]
 };
 
+// Get the next item given a list of options
 const getNext = (current, options, steps = 1, wrap = true) => {
   let index = options.indexOf(current) + steps;
   if (index < 0) {
@@ -36,6 +37,8 @@ const getNext = (current, options, steps = 1, wrap = true) => {
 
 const settingsReducer = (state = defaultSettings, action) => {
   switch (action.type) {
+
+  // Overlay display
   case "TOGGLE_SETTINGS": {
     let page = state.page;
     if (state.visible) {
@@ -45,6 +48,13 @@ const settingsReducer = (state = defaultSettings, action) => {
   }
   case "TOGGLE_PAGE":
     return { ...state, page: state.page === 1 ? 2 : 1 };
+
+  // Timer display
+  case "SET_MODE": {
+    return { ...state, mode: action.payload };
+  }
+
+  // App styling
   case "SET_THEME": {
     let theme = action.payload;
     if (action.payload === "next") {
@@ -65,9 +75,8 @@ const settingsReducer = (state = defaultSettings, action) => {
     }
     return { ...state, liquid: liquid };
   }
-  case "SET_MODE": {
-    return { ...state, mode: action.payload };
-  }
+
+  // Timer intervals
   case "SET_FOCUS": {
     let focus = action.payload;
     if (action.payload === "next") {
@@ -116,6 +125,8 @@ const settingsReducer = (state = defaultSettings, action) => {
     }
     return { ...state, step: step, mode: mode };
   }
+
+  // Alerts
   case "SET_ALERT":
     return { ...state, alert: action.payload, alertTimeout: 3 };
   case "COUNT_ALERT": {
@@ -123,6 +134,7 @@ const settingsReducer = (state = defaultSettings, action) => {
     const alert = timeout ? state.alert : null;
     return { ...state, alert: alert, alertTimeout: timeout >= 0 ? timeout : 0 };
   }
+
   default:
     return state;
   }

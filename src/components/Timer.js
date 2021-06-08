@@ -7,7 +7,9 @@ import "./Timer.scss";
 
 const Timer = () => {
 
-  // State Management
+  // STATE MANAGEMENT ///////////////////////////////////////////////
+
+  // Global states
   const { enabled, time } = useSelector(state => state.timer);
   const settings = useSelector(state => state.settings);
   const dispatch = useDispatch();
@@ -40,21 +42,28 @@ const Timer = () => {
     }
   });
 
+  // startTimer & stopTimer handler
   const toggleTimer = () => {
     dispatch(enabled ? stopTimer() : startTimer());
   };
 
-  // Component Variables
+  // COMPONENT VARIABLES ////////////////////////////////////////////
+
+  // CSS
   const timerStyles = classNames({
     Timer: true,
     enabled: enabled,
     [`shadow-${settings.mode}`]: true
   });
+
+  // Timer display
   const display = moment(time * 1000).format("mm:ss");
   let [minutes, seconds] = display.split(":");
   if (time === 3600) {
     minutes = 60;
   }
+
+  ///////////////////////////////////////////////////////////////////
 
   return (
     <div className={timerStyles} onClick={() => toggleTimer()}>

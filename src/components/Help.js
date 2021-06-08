@@ -8,7 +8,11 @@ const Help = (props) => {
 
   return (
     <div className="Help foreground overlay">
+
+      {/* Overlay Header */}
       <h2>Quick Controls</h2>
+
+      {/* Info Box */}
       <div className="controls">
         <h4>
           <span className="option">
@@ -104,7 +108,10 @@ const Help = (props) => {
           </span>
         </h4>
       </div>
+
+      {/* Close Button */}
       <h3 className="settings-toggle close" onClick={() => props.onClose(false)}>close</h3>
+
     </div>
   );
 

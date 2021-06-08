@@ -11,39 +11,25 @@ import classNames from "classnames";
 
 const App = () => {
 
+  // STATE MANAGEMENT ///////////////////////////////////////////////
+
+  // Local States
   const [showAbout, setShowAbout] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [shift, setShift] = useState(false);
 
-  // State Management
+  // Global States
   const timer = useSelector(state => state.timer);
   const settings = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
-  // Component Variables
-  const appStyles = classNames({
-    App: true,
-    [`theme-${settings.theme}`]: true,
-    "shift-down": shift,
-    [`shift-${settings.mode}`]: settings.invert ? !shift : shift
-  });
-
-  // Stop timer when settings are toggled
+  // toggleSettings handler
   const onToggleSettings = () => {
     dispatch(stopTimer());
     dispatch(toggleSettings());
   };
 
-  // Format mode to be displayed
-  const formatMode = (mode) => {
-    if (mode === "bigChill") {
-      return "big chill";
-    } else if (mode === "chill") {
-      return "lil chill";
-    } else {
-      return "focus";
-    }
-  };
+  // ALERTS /////////////////////////////////////////////////////////
 
   // Set a timeout for the alert display
   useEffect(() => {
@@ -66,6 +52,27 @@ const App = () => {
   const showAlert = (message) => {
     dispatch(setAlert(message));
   };
+
+  // KEYPRESS EVENTS ////////////////////////////////////////////////
+
+  // Event listener handler
+  useEffect(() => {
+    if (!showAbout && !showHelp && !settings.visible) {
+      document.addEventListener("keydown", keyHandler, false);
+      document.removeEventListener("keydown", escHandler, false);
+      document.addEventListener("keyup", keyUpHandler, false);
+    } else {
+      dispatch(stopTimer());
+      document.removeEventListener("keydown", keyHandler, false);
+      document.addEventListener("keydown", escHandler, false);
+      document.removeEventListener("keyup", keyUpHandler, false);
+    }
+    return () => {
+      document.removeEventListener("keydown", keyHandler, false);
+      document.removeEventListener("keydown", escHandler, false);
+      document.removeEventListener("keyup", keyUpHandler, false);
+    };
+  }, [timer.enabled, showAbout, showHelp, settings.visible]);
 
   // Handle keydown events
   const keyHandler = (event) => {
@@ -231,26 +238,30 @@ const App = () => {
     }
   };
 
-  // Manage event listeners based on app view
-  useEffect(() => {
-    if (!showAbout && !showHelp && !settings.visible) {
-      document.addEventListener("keydown", keyHandler, false);
-      document.removeEventListener("keydown", escHandler, false);
-      document.addEventListener("keyup", keyUpHandler, false);
-    } else {
-      dispatch(stopTimer());
-      document.removeEventListener("keydown", keyHandler, false);
-      document.addEventListener("keydown", escHandler, false);
-      document.removeEventListener("keyup", keyUpHandler, false);
-    }
-    return () => {
-      document.removeEventListener("keydown", keyHandler, false);
-      document.removeEventListener("keydown", escHandler, false);
-      document.removeEventListener("keyup", keyUpHandler, false);
-    };
-  }, [timer.enabled, showAbout, showHelp, settings.visible]);
+  // HELPER FUNCTIONS ///////////////////////////////////////////////
 
-  // Construct alert message
+  // Format mode to be displayed
+  const formatMode = (mode) => {
+    if (mode === "bigChill") {
+      return "big chill";
+    } else if (mode === "chill") {
+      return "lil chill";
+    } else {
+      return "focus";
+    }
+  };
+
+  // COMPONENT VARIABLES ////////////////////////////////////////////
+
+  // CSS
+  const appStyles = classNames({
+    App: true,
+    [`theme-${settings.theme}`]: true,
+    "shift-down": shift,
+    [`shift-${settings.mode}`]: settings.invert ? !shift : shift
+  });
+
+  // Alert messages
   let message = settings.alert;
   switch (message) {
   case "autostart":
@@ -276,6 +287,8 @@ const App = () => {
     break;
   }
   }
+
+  ///////////////////////////////////////////////////////////////////
 
   return (
     <main className={appStyles}>

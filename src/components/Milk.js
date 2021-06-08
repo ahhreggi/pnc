@@ -3,11 +3,15 @@ import "./Milk.scss";
 
 const Milk = () => {
 
-  // State Management
+  // STATE MANAGEMENT ///////////////////////////////////////////////
+
+  // Global States
   const { time } = useSelector(state => state.timer);
   const settings = useSelector(state => state.settings);
 
-  // Component Variables
+  // COMPONENT VARIABLES ////////////////////////////////////////////
+
+  // Calculate milk height based on mode & elapsed time
   const mode = settings.mode;
   const startTime = settings[mode];
   const elapsed = startTime - time;
@@ -15,7 +19,7 @@ const Milk = () => {
   const percent = progress <= 2 ? 2 : progress;
   const height = { height: `${mode === "focus" ? 100 + percent : 200 - percent}vh`};
 
-  // Dynamically change milk color to match mode when liquid = auto
+  // Set milk color to match mode when set to auto
   let color = settings.liquid;
   if (settings.liquid === "auto") {
     switch (settings.mode) {
@@ -34,6 +38,8 @@ const Milk = () => {
   } else {
     color = settings.liquid;
   }
+
+  ///////////////////////////////////////////////////////////////////
 
   return (
     <div className="Milk">

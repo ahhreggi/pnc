@@ -9,6 +9,8 @@ const Settings = () => {
   // State Management
   const settings = useSelector(state => state.settings);
   const dispatch = useDispatch();
+
+  // Event listener handler
   useEffect(() => {
     if (settings.visible) {
       document.removeEventListener("keydown", keyHandler, false);
@@ -21,6 +23,7 @@ const Settings = () => {
     };
   }, [settings.visible, settings.page]);
 
+  // Handle keydown events
   const keyHandler = (event) => {
     if (event.code === "Tab") {
       event.preventDefault();
@@ -58,20 +61,31 @@ const Settings = () => {
 
   return (
     <div className={settingsStyles}>
+
       <h2>Settings</h2>
 
+      {/* Current Step */}
       <h4 className="current">
         current step: {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{formatMode(settings.mode)}</span>)
       </h4>
 
+      {/* Individual Settings Pages */}
       <div className="settings-page">
 
         {settings.page === 1 &&
           <>
-            <h4 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>+30 sec</h4>
-            <h4 className="settings-toggle font-yellow" onClick={() => dispatch(getNextStep())}>skip current step</h4>
-            <h4 className="settings-toggle font-red" onClick={() =>     dispatch(resetTimer())}>reset current step</h4>
-            <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>next page &gt;</h4>
+            <h4 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>
+              +30 sec
+            </h4>
+            <h4 className="settings-toggle font-yellow" onClick={() => dispatch(getNextStep())}>
+              skip current step
+            </h4>
+            <h4 className="settings-toggle font-red" onClick={() => dispatch(resetTimer())}>
+              reset current step
+            </h4>
+            <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>
+              next page &gt;
+            </h4>
           </>
         }
 
@@ -111,7 +125,11 @@ const Settings = () => {
 
       </div>
 
-      <h3 className="settings-toggle close" onClick={() => dispatch(toggleSettings())}>close</h3>
+      {/* Close Button */}
+      <h3 className="settings-toggle close" onClick={() => dispatch(toggleSettings())}>
+        close
+      </h3>
+
     </div>
   );
 
