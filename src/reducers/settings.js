@@ -15,7 +15,7 @@ const defaultSettings = {
 
 const options = {
   themes: ["red", "orange", "yellow", "green", "blue", "purple", "navy", "grey"],
-  liquids: ["white", "red", "orange", "yellow", "green", "blue", "purple", "navy", "grey", "auto"],
+  liquids: ["white", "red", "orange", "yellow", "green", "blue", "purple", "navy", "grey", "auto", "off"],
   focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600],
   chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 900],
   bigChill: [300, 600, 900, 1200, 1500, 1800, 2100, 2700, 3300, 3600]

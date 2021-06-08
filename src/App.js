@@ -201,7 +201,9 @@ const App = () => {
       <Help onClose={setShowHelp} />
       }
       <Settings />
-      <Milk />
+      {settings.liquid !== "off" &&
+        <Milk />
+      }
     </main>
   );
 

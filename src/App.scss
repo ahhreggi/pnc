@@ -94,7 +94,6 @@
       min-width: 16rem;
       display: inline-flex;
       flex-wrap: nowrap;
-      // border: 1px solid yellow;
     }
     span.option {
       justify-content: flex-end;
@@ -112,7 +111,6 @@
     left: 0.5rem;
     @include flex-center;
     h3 {
-      // border: 1px solid red;
       margin-right: 1.5rem;
       width: 6rem;
       opacity: 0.8;
@@ -126,7 +124,8 @@
       }
     }
     @media screen and (max-width: 960px) {
-      // left: 20vw
+      left: auto;
+      right: auto;
     }
   }
   section.display {
