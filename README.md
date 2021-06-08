@@ -60,5 +60,6 @@ The project is live
 
 ## 📷 Screenshots
 <img src="./public/screenshots/chill.png">
+<img src="./public/screenshots/alert.png">
 <img src="./public/screenshots/settings.png">
 <img src="./public/screenshots/controls.png">
