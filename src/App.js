@@ -42,6 +42,9 @@ const App = () => {
 
   const keyHandler = (event) => {
     // event.preventDefault();
+    if (event.code === "Tab") {
+      event.preventDefault();
+    }
     // console.log(event);
     let key = (event.shiftKey ? "Shift+" : "") + event.code;
     switch (key) {

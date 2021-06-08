@@ -63,6 +63,12 @@ export const toggleSettings = () => {
   };
 };
 
+export const togglePage = () => {
+  return {
+    type: "TOGGLE_PAGE"
+  };
+};
+
 export const setMode = (option) => {
   return {
     type: "SET_MODE",

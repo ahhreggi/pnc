@@ -8,7 +8,8 @@ const defaultSettings = {
   mode: "focus",
   interval: 4,
   step: 1,
-  autoStart: true
+  autoStart: true,
+  page: 1
 };
 
 const options = {
@@ -31,8 +32,15 @@ const getNext = (current, options, steps = 1) => {
 
 const settingsReducer = (state = defaultSettings, action) => {
   switch (action.type) {
-  case "TOGGLE_SETTINGS":
-    return { ...state, visible: !state.visible };
+  case "TOGGLE_SETTINGS": {
+    let page = state.page;
+    if (state.visible) {
+      page = 1;
+    }
+    return { ...state, visible: !state.visible, page: 1 };
+  }
+  case "TOGGLE_PAGE":
+    return { ...state, page: state.page === 1 ? 2 : 1 };
   case "SET_THEME": {
     let theme = action.payload;
     if (action.payload === "next") {
