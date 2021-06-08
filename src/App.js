@@ -131,10 +131,12 @@ const App = () => {
     case "Shift+KeyA": case "Shift+ArrowLeft":
       dispatch(getNextStep(-1));
       showAlert("moved to previous step");
+      dispatch(stopTimer());
       break;
     case "Shift+KeyD": case "Shift+ArrowRight":
       dispatch(getNextStep(1));
       showAlert("moved to next step");
+      dispatch(stopTimer());
       break;
 
     // Shift + R: Reset current interval to default
@@ -262,6 +264,14 @@ const App = () => {
       message = "disabled milk animation";
     } else {
       message += ` to ${settings.liquid}`;
+    }
+    break;
+  }
+  case "changed timer style": {
+    if (settings.invert) {
+      message += " to inverted";
+    } else {
+      message += " to default";
     }
     break;
   }

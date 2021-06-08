@@ -32,9 +32,9 @@
 - Users can adjust the timer, skip, or reset the current step.
 - Users can toggle timer autostart.
 - Time progression is visualized by milk that dynamically fills up the screen.
-- Users can customize the background and milk colors.
-- Setting milk color to "auto" automatically matches it to the current mode.
-- Setting milk color to "off" disables the time visualization.
+- Users can customize the background/milk colors and timer style.
+- Users can set milk color to "auto" to have it change according to the current step.
+- Users can set milk color to "off" to disable the time visualization.
 
 <!-- INSTALLATION -->
 
