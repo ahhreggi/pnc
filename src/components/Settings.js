@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increaseTimer, resetTimer, setTheme, setAnimation, toggleInvert, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart } from "../actions";
+import moment from "moment";
 import classNames from "classnames";
 import "./Settings.scss";
 
@@ -59,14 +60,25 @@ const Settings = () => {
     hide: !settings.visible
   });
 
+  // Total time
+  let total = (4 * settings.focus) + (3 * settings.chill) + settings.bigChill;
+  total = moment.utc(total * 1000).format("HH:mm:ss");
+
   return (
     <div className={settingsStyles}>
 
       <h2>Settings</h2>
 
       {/* Current Step */}
-      <h4 className="current">
-        current step: {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{formatMode(settings.mode)}</span>)
+      <h4 className="current settings-toggle">
+        <span className="option">current step:</span>
+        <span className="value">
+          {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{formatMode(settings.mode)}</span>)
+        </span>
+      </h4>
+      <h4 className="total settings-toggle">
+        <span className="option">total time:</span>
+        <span className="value">{total}</span>
       </h4>
 
       {/* Individual Settings Pages */}
@@ -91,6 +103,18 @@ const Settings = () => {
 
         {settings.page === 2 &&
           <>
+            <h4 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
+              <span className="option">focus length:</span>
+              <span className="value focus">{formatTime(settings.focus)}</span>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>
+              <span className="option">lil chill length:</span>
+              <span className="value chill">{formatTime(settings.chill)}</span>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(setBigChill("next"))}>
+              <span className="option">big chill length:</span>
+              <span className="value bigChill">{formatTime(settings.bigChill)}</span>
+            </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
               <span className="option">bg color:</span>
               <span className={`value font-${settings.theme}`}>{settings.theme}</span>
@@ -106,18 +130,6 @@ const Settings = () => {
             <h4 className="settings-toggle" onClick={() => dispatch(toggleInvert())}>
               <span className="option">timer style:</span>
               <span className="value">{settings.invert ? "inverted" : "default"}</span>
-            </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
-              <span className="option">focus:</span>
-              <span className="value focus">{formatTime(settings.focus)}</span>
-            </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>
-              <span className="option">lil chill:</span>
-              <span className="value chill">{formatTime(settings.chill)}</span>
-            </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setBigChill("next"))}>
-              <span className="option">big chill:</span>
-              <span className="value bigChill">{formatTime(settings.bigChill)}</span>
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
               <span className="option">autostart:</span>

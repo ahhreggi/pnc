@@ -7,26 +7,34 @@
     margin-bottom: 2rem;
   }
 
-  .current {
-    margin-bottom: 2rem;
+  .current,
+  .total,
+  .settings-page {
+    span.option,
+    span.value {
+      min-width: 11rem;
+      flex-wrap: nowrap;
+    }
+
+    span.option {
+      text-align: right;
+      margin-right: 1rem;
+    }
 
     span.value {
-      width: 20rem;
+      text-align: initial;
     }
   }
-
-  span.option,
-  span.value {
-    min-width: 11rem;
-    flex-wrap: nowrap;
+  .current,
+  .total {
+    &:hover {
+      // border: 1px solid red;
+      cursor: initial;
+      font-size: 1.5rem;
+    }
+  }
+  .total {
+    margin-bottom: 2rem;
   }
 
-  span.option {
-    text-align: right;
-    margin-right: 1rem;
-  }
-
-  span.value {
-    text-align: initial;
-  }
 }
