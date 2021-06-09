@@ -27,46 +27,83 @@
 
     &.liquid-white {
       background: linear-gradient($white, transparent);
+
+      &.flat {
+        opacity: 0.8;
+        background: linear-gradient($white, $white);
+      }
     }
 
     &.liquid-red {
       background: linear-gradient($red, $white);
+
+      &.flat {
+        background: linear-gradient($red, $red);
+      }
     }
 
     &.liquid-orange {
       background: linear-gradient($orange, $white);
+
+      &.flat {
+        background: linear-gradient($orange, $orange);
+      }
     }
 
     &.liquid-yellow {
       background: linear-gradient($yellow, $white);
+
+      &.flat {
+        background: linear-gradient($yellow, $yellow);
+      }
     }
 
     &.liquid-green {
       background: linear-gradient($green, $white);
+
+      &.flat {
+        background: linear-gradient($green, $green);
+      }
     }
 
     &.liquid-blue {
       background: linear-gradient($blue, $white);
+
+      &.flat {
+        background: linear-gradient($blue, $blue);
+      }
     }
 
     &.liquid-purple {
       background: linear-gradient($purple, $white);
+
+      &.flat {
+        background: linear-gradient($purple, $purple);
+      }
     }
 
     &.liquid-pink {
       background: linear-gradient($pink, $white);
+
+      &.flat {
+        background: linear-gradient($pink, $pink);
+      }
     }
 
     &.liquid-navy {
       background: linear-gradient($navy, $white);
+
+      &.flat {
+        background: linear-gradient($navy, $navy);
+      }
     }
 
     &.liquid-grey {
       background: linear-gradient($grey, $white);
-    }
 
-    &.liquid-grey {
-      background: linear-gradient($grey, $white);
+      &.flat {
+        background: linear-gradient($grey, $grey);
+      }
     }
   }
 
@@ -90,6 +127,7 @@
       transition: 2s;
       transition-timing-function: linear;
       opacity: 1;
+      filter: brightness(110%);
     }
   }
 
