@@ -68,9 +68,9 @@ const Milk = () => {
 
   return (
     <div className={`Milk ${settings.animation} ${loading ? "loading" : ""}`}>
-      <div className={`liquid one liquid-${color}`} style={height} />
+      <div className={`liquid one theme-${color} liquid-${settings.animation === "on" ? color : ""}`} style={height} />
       {settings.animation === "on" &&
-        <div className={`liquid one two liquid-${color}`} style={height} />
+        <div className={`liquid one two theme-${color} liquid-${settings.animation === "on" ? color : ""}`} style={height} />
       }
     </div>
   );

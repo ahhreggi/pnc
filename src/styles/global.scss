@@ -70,6 +70,14 @@ h4.settings-toggle {
   background-color: $grey;
 }
 
+.theme-white {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.theme-rainbow {
+  background: $rainbow;
+}
+
 .font-red {
   color: $red;
 }
