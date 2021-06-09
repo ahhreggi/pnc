@@ -105,6 +105,14 @@
         background: linear-gradient($grey, $grey);
       }
     }
+
+    &.liquid-black {
+      background: linear-gradient($black, $white);
+
+      &.flat {
+        background: linear-gradient($black, $black);
+      }
+    }
   }
 
   &.off {

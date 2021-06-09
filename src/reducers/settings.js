@@ -18,8 +18,8 @@ const defaultSettings = {
 };
 
 const options = {
-  themes: ["red", "orange", "yellow", "green", "blue", "purple", "pink", "navy", "grey", "rainbow"],
-  liquids: ["white", "red", "orange", "yellow", "green", "blue", "purple", "pink", "navy", "grey", "auto"],
+  themes: ["red", "orange", "yellow", "green", "blue", "purple", "pink", "navy", "grey", "black", "rainbow"],
+  liquids: ["white", "red", "orange", "yellow", "green", "blue", "purple", "pink", "navy", "grey", "black", "auto"],
   animations: ["on", "flat", "off"],
   focus: [300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600],
   chill: [60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 900, 1200, 1500, 1800],
