@@ -136,9 +136,8 @@
     .nav-right {
       display: flex;
       justify-content: space-between;
-      // border: 1px solid red;
+
       h4 {
-        // border: 1px solid red;
         width: 6rem;
         opacity: 0.8;
 
@@ -160,10 +159,12 @@
         height: 2.5rem;
         width: 2.5rem;
         @include flex-center;
+
         &.active {
           opacity: 0.8;
           color: $white;
         }
+
         &:hover {
           opacity: 1;
           cursor: pointer;
