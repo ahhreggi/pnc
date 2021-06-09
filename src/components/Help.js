@@ -80,6 +80,14 @@ const Help = (props) => {
         </h4>
         <h4>
           <span className="option">
+            <span className="key">M</span>
+          </span>
+          <span className="value">
+            toggle timer alarm
+          </span>
+        </h4>
+        <h4>
+          <span className="option">
             <span className="key">Z</span>
             <span className="key">X</span>
             <span className="key">C</span>
@@ -90,7 +98,7 @@ const Help = (props) => {
         </h4>
         <h4>
           <span className="option">
-            <span className="key">M</span>
+            <span className="key">V</span>
           </span>
           <span className="value">
             cycle milk animation styles

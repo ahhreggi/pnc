@@ -14,7 +14,8 @@ const defaultSettings = {
   page: 1,
   selection: null,
   alert: null,
-  alertTimeout: 3
+  alertTimeout: 3,
+  playSound: true
 };
 
 const options = {
@@ -143,6 +144,10 @@ const settingsReducer = (state = defaultSettings, action) => {
     const alert = timeout ? state.alert : null;
     return { ...state, alert: alert, alertTimeout: timeout >= 0 ? timeout : 0 };
   }
+
+  // Sounds
+  case "TOGGLE_SOUND":
+    return { ...state, playSound: !state.playSound };
 
   default:
     return state;

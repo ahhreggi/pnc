@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSettings, resetTimer, setTheme, resetTheme, setAnimation, toggleInvert, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert } from "./actions";
+import { toggleSettings, resetTimer, setTheme, resetTheme, setAnimation, toggleInvert, setLiquid, increaseTimer, decreaseTimer, adjustInterval, resetInterval, startTimer, stopTimer, getNextStep, toggleAutoStart, setAlert, countAlert, toggleSound } from "./actions";
 import "./App.scss";
 import Timer from "./components/Timer";
 import About from "./components/About";
@@ -175,10 +175,15 @@ const App = () => {
       showAlert("changed timer style");
       break;
 
-    // M: Change timer style
-    case "KeyM":
+    // V: Change timer style
+    case "KeyV":
       dispatch(setAnimation("next"));
       showAlert("changed animation style");
+      break;
+
+    // M: Change timer style
+    case "KeyM":
+      onToggleSound();
       break;
 
     // Shift + T: Reset bg + milk to default
@@ -257,6 +262,12 @@ const App = () => {
     }
   };
 
+  // Toggle timer alarm
+  const onToggleSound = () => {
+    dispatch(toggleSound());
+    showAlert("timer alarm");
+  };
+
   // COMPONENT VARIABLES ////////////////////////////////////////////
 
   // CSS
@@ -292,6 +303,10 @@ const App = () => {
     message += ` to ${settings.animation}`;
     break;
   }
+  case "timer alarm": {
+    message += ` ${settings.playSound ? "enabled" : "disabled"}`;
+    break;
+  }
   }
 
   ///////////////////////////////////////////////////////////////////
@@ -301,9 +316,14 @@ const App = () => {
 
       {/* Nav Bar */}
       <header className="nav foreground">
-        <h4 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h4>
-        <h4 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h4>
-        <h4 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h4>
+        <div className="nav-left">
+          <h4 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h4>
+          <h4 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h4>
+          <h4 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h4>
+        </div>
+        <div className="nav-right" onClick={() => onToggleSound()}>
+          <i className={`sound-toggle fa fa-volume-up ${settings.playSound ? "active" : ""}`} />
+        </div>
       </header>
 
       {/* Main Display */}

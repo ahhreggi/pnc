@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, resetTimer, setTheme, setAnimation, toggleInvert, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart } from "../actions";
+import { increaseTimer, resetTimer, setTheme, setAnimation, toggleInvert, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart, toggleSound } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Settings.scss";
@@ -130,6 +130,10 @@ const Settings = () => {
             <h4 className="settings-toggle" onClick={() => dispatch(toggleInvert())}>
               <span className="option">timer style:</span>
               <span className="value">{settings.invert ? "inverted" : "default"}</span>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(toggleSound())}>
+              <span className="option">timer alarm:</span>
+              <span className="value">{settings.playSound ? "on" : "off"}</span>
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
               <span className="option">autostart:</span>

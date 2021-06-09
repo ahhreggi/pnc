@@ -150,3 +150,9 @@ export const countAlert = (message) => {
     payload: message
   };
 };
+
+export const toggleSound = () => {
+  return {
+    type: "TOGGLE_SOUND"
+  };
+};

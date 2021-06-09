@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decreaseTimer, setTimer, startTimer, stopTimer, getNextStep } from "../actions";
+import { decreaseTimer, setTimer, startTimer, stopTimer, getNextStep, setAlert } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Timer.scss";
@@ -42,8 +42,16 @@ const Timer = () => {
     }
   });
 
+  useEffect(() => {
+    if (enabled && settings.playSound && time === 0) {
+      const audio = new Audio("/alert.mp3");
+      audio.play();
+    }
+  }, [time]);
+
   // startTimer & stopTimer handler
   const toggleTimer = () => {
+    dispatch(setAlert(`timer ${enabled ? "stopped" : "started"}`));
     dispatch(enabled ? stopTimer() : startTimer());
   };
 
