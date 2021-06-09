@@ -153,12 +153,13 @@
       }
 
       .sound-toggle {
-        font-size: 2rem;
+        font-size: 2.3rem;
         margin-right: 1rem;
         opacity: 0.7;
         color: $dark;
-        height: 2rem;
-        width: 2rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        @include flex-center;
         &.active {
           opacity: 0.8;
           color: $white;
@@ -166,7 +167,6 @@
         &:hover {
           opacity: 1;
           cursor: pointer;
-          font-size: 2.1rem;
         }
       }
 

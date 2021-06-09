@@ -31,10 +31,11 @@
 - Users can customize interval lengths.
 - Users can adjust the timer, skip, or reset the current step.
 - Users can toggle timer autostart.
+- Users can toggle timer alarm sound.
 - Time progression is visualized by milk that dynamically fills up the screen.
 - Users can customize the background/milk colors and timer style.
 - Users can set milk color to "auto" to have it change according to the current step.
-- Users can set milk animation to "on" , "flat", or "off".
+- Users can customize the milk animation style.
 
 <!-- INSTALLATION -->
 
