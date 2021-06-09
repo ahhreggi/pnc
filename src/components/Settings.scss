@@ -8,8 +8,10 @@
   }
 
   .current,
+  .elapsed,
   .total,
   .settings-page {
+
     span.option,
     span.value {
       min-width: 11rem;
@@ -25,14 +27,17 @@
       text-align: initial;
     }
   }
+
   .current,
+  .elapsed,
   .total {
     &:hover {
-      // border: 1px solid red;
       cursor: initial;
       font-size: 1.5rem;
     }
   }
+
+  .elapsed,
   .total {
     margin-bottom: 2rem;
   }

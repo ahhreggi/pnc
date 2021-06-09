@@ -186,7 +186,7 @@ const App = () => {
       onToggleSound();
       break;
 
-    // Shift + T: Reset bg + milk to default
+    // Shift + T: Reset all styles
     case "Shift+KeyT":
       dispatch(resetTheme());
       showAlert("styles have been reset to default!");

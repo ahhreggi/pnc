@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increaseTimer, resetTimer, setTheme, setAnimation, toggleInvert, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart, toggleSound } from "../actions";
+import { increaseTimer, resetTimer, adjustElapsed, setTheme, setAnimation, toggleInvert, setLiquid, toggleSettings, togglePage, setFocus, setChill, setBigChill, getNextStep, toggleAutoStart, toggleSound } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Settings.scss";
 
 const Settings = () => {
 
-  // State Management
+  // STATE MANAGEMENT ///////////////////////////////////////////////
+
+  // Global States
   const settings = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
@@ -24,6 +26,8 @@ const Settings = () => {
     };
   }, [settings.visible, settings.page]);
 
+  // KEYPRESS EVENTS ////////////////////////////////////////////////
+
   // Handle keydown events
   const keyHandler = (event) => {
     if (event.code === "Tab") {
@@ -36,6 +40,8 @@ const Settings = () => {
   useEffect(() => {
     dispatch(resetTimer());
   }, [settings.mode]);
+
+  // HELPER FUNCTIONS ///////////////////////////////////////////////
 
   const formatTime = (time) => {
     return `${time / 60} min`;
@@ -51,7 +57,14 @@ const Settings = () => {
     }
   };
 
-  // Component Variables
+  const getTimestamp = (seconds) => {
+    const time = seconds < 0 ? 0 : seconds;
+    return moment.utc(time * 1000).format("HH:mm:ss");
+  };
+
+  // COMPONENT VARIABLES ////////////////////////////////////////////
+
+  // CSS
   const settingsStyles = classNames({
     Settings: true,
     foreground: true,
@@ -60,9 +73,12 @@ const Settings = () => {
     hide: !settings.visible
   });
 
+  // Elapsed time
+  const elapsed = getTimestamp(settings.elapsed);
+
   // Total time
   let total = (4 * settings.focus) + (3 * settings.chill) + settings.bigChill;
-  total = moment.utc(total * 1000).format("HH:mm:ss");
+  total = getTimestamp(total);
 
   return (
     <div className={settingsStyles}>
@@ -76,16 +92,16 @@ const Settings = () => {
           {settings.step}/{settings.interval * 2} (<span className={settings.mode}>{formatMode(settings.mode)}</span>)
         </span>
       </h4>
-      <h4 className="total settings-toggle">
-        <span className="option">total time:</span>
-        <span className="value">{total}</span>
-      </h4>
 
       {/* Individual Settings Pages */}
       <div className="settings-page">
 
         {settings.page === 1 &&
           <>
+            <h4 className="elapsed settings-toggle">
+              <span className="option">elapsed time:</span>
+              <span className="value">{elapsed}</span>
+            </h4>
             <h4 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>
               +30 sec
             </h4>
@@ -95,6 +111,9 @@ const Settings = () => {
             <h4 className="settings-toggle font-red" onClick={() => dispatch(resetTimer())}>
               reset current step
             </h4>
+            <h4 className="settings-toggle font-blue" onClick={() => dispatch(adjustElapsed(0 - settings.elapsed))}>
+              reset elapsed time
+            </h4>
             <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>
               next page &gt;
             </h4>
@@ -103,6 +122,10 @@ const Settings = () => {
 
         {settings.page === 2 &&
           <>
+            <h4 className="total settings-toggle">
+              <span className="option">total time:</span>
+              <span className="value">{total}</span>
+            </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
               <span className="option">focus length:</span>
               <span className="value focus">{formatTime(settings.focus)}</span>

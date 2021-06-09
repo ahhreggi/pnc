@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decreaseTimer, setTimer, startTimer, stopTimer, getNextStep, setAlert } from "../actions";
+import { decreaseTimer, adjustElapsed, setTimer, startTimer, stopTimer, getNextStep, setAlert } from "../actions";
 import moment from "moment";
 import classNames from "classnames";
 import "./Timer.scss";
@@ -34,6 +34,7 @@ const Timer = () => {
       const countdown = setTimeout(() => {
         if (time) {
           dispatch(decreaseTimer(1));
+          dispatch(adjustElapsed(1));
         } else {
           dispatch(getNextStep());
         }

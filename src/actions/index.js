@@ -156,3 +156,10 @@ export const toggleSound = () => {
     type: "TOGGLE_SOUND"
   };
 };
+
+export const adjustElapsed = (seconds) => {
+  return {
+    type: "ADJUST_ELAPSED",
+    payload: seconds
+  };
+};

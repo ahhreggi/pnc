@@ -15,7 +15,8 @@ const defaultSettings = {
   selection: null,
   alert: null,
   alertTimeout: 3,
-  playSound: true
+  playSound: true,
+  elapsed: 0
 };
 
 const options = {
@@ -134,6 +135,15 @@ const settingsReducer = (state = defaultSettings, action) => {
       mode = step < maxSteps ? "chill" : "bigChill";
     }
     return { ...state, step: step, mode: mode };
+  }
+
+  // Elapsed + extra time
+  case "ADJUST_ELAPSED": {
+    let newValue = state.elapsed + action.payload;
+    // if (newValue < 0) {
+    //   newValue = 0;
+    // }
+    return { ...state, elapsed: newValue };
   }
 
   // Alerts
