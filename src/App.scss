@@ -121,6 +121,24 @@
     span.value {
       justify-content: flex-start;
     }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 400px) {
+      .controls {
+        width: 85vw;
+        overflow-x: hidden;
+      }
+
+      h4 {
+        @include flex-center-col;
+        margin: 1rem 0;
+
+        span.option,
+        span.value {
+          justify-content: center;
+        }
+      }
+    }
   }
 
   /* Nav Bar */
@@ -184,8 +202,12 @@
   /* Main Display */
   section.display {
     margin: 3rem 0;
-    padding: 3rem 0;
+    padding: 6rem 0;
     @include flex-center-col;
+
+    h2.title {
+      padding-top: 5rem;
+    }
 
     h3.mode {
       font-size: 3rem;

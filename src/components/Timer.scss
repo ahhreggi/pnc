@@ -5,9 +5,15 @@
   background-color: $dark;
   border-radius: 15px;
   border: 5px solid transparent;
+  max-width: 42rem;
   width: 42rem;
   @include flex-center;
   margin-bottom: 0.5rem;
+
+  h1 {
+    line-height: 16rem;
+    // border: 1px solid red;
+  }
 
   &:hover {
     cursor: pointer;
@@ -53,23 +59,32 @@
   }
 
   /* Responsive Styles */
-  @media screen and (min-width: 640px) and (max-width: 780px) {
-    zoom: 90%;
+  @media screen and (max-width: 780px) {
+    width: 38rem;
+
+    h1 {
+      font-size: 13rem;
+      line-height: 15rem;
+    }
   }
 
   @media screen and (min-width: 520px) and (max-width: 640px) {
-    zoom: 80%;
+    width: 35rem;
   }
 
-  @media screen and (min-width: 400px) and (max-width: 520px) {
-    zoom: 65%;
+  @media screen and (max-width: 520px) {
+    width: 70vw;
+
+    h1 {
+      font-size: 25vw;
+      line-height: 25vw;
+      margin-bottom: 2vw;
+    }
   }
 
-  @media screen and (min-width: 360px) and (max-width: 400px) {
-    zoom: 60%;
-  }
-
-  @media screen and (max-width: 360px) {
-    zoom: 45%;
+  @media screen and (max-width: 400px) {
+    h1 {
+      margin-bottom: 4vw;
+    }
   }
 }

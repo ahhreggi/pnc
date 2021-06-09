@@ -328,7 +328,7 @@ const App = () => {
 
       {/* Main Display */}
       <section className="display foreground">
-        <h2 className="settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
+        <h2 className="title settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
         <Timer />
         <footer onClick={() => onToggleSettings()}>
           <h3 className="settings-toggle mode">
