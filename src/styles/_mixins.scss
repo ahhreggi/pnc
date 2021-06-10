@@ -29,6 +29,7 @@
 
 @mixin custom-scrollbar {
   overflow: overlay;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     height: 0.25rem;
@@ -40,7 +41,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $white;
+    background-color: transparent;
     border-radius: 15px;
   }
 
