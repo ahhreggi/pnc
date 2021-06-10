@@ -45,15 +45,20 @@ const Timer = () => {
 
   useEffect(() => {
     if (enabled && settings.playSound && time === 0) {
-      const audio = new Audio("/alert.mp3");
+      const audio = new Audio("/sounds/alert.mp3");
       audio.play();
     }
   }, [time]);
 
   // startTimer & stopTimer handler
   const toggleTimer = () => {
-    dispatch(setAlert(`timer ${enabled ? "stopped" : "started"}`));
-    dispatch(enabled ? stopTimer() : startTimer());
+    if (enabled) {
+      dispatch(setAlert("timer stopped"));
+      dispatch(stopTimer());
+    } else {
+      dispatch(setAlert("timer started"));
+      dispatch(startTimer());
+    }
   };
 
   // COMPONENT VARIABLES ////////////////////////////////////////////

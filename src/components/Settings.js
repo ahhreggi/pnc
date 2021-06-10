@@ -62,6 +62,13 @@ const Settings = () => {
     return moment.utc(time * 1000).format("HH:mm:ss");
   };
 
+  const playSound = (sound) => {
+    if (settings.playSound) {
+      const audio = new Audio(`/sounds/${sound}.mp3`);
+      audio.play();
+    }
+  };
+
   // COMPONENT VARIABLES ////////////////////////////////////////////
 
   // CSS
@@ -102,16 +109,25 @@ const Settings = () => {
               <span className="option">elapsed time:</span>
               <span className="value">{elapsed}</span>
             </h4>
-            <h4 className="settings-toggle font-green" onClick={() => dispatch(increaseTimer(30))}>
+            <h4 className="settings-toggle font-green" onClick={() => {
+              dispatch(increaseTimer(30));
+              playSound("up");
+            }}>
               +30 sec
             </h4>
             <h4 className="settings-toggle font-yellow" onClick={() => dispatch(getNextStep())}>
               skip current step
             </h4>
-            <h4 className="settings-toggle font-red" onClick={() => dispatch(resetTimer())}>
+            <h4 className="settings-toggle font-red" onClick={() => {
+              playSound("reset");
+              dispatch(resetTimer());
+            }}>
               reset current step
             </h4>
-            <h4 className="settings-toggle font-blue" onClick={() => dispatch(adjustElapsed(0 - settings.elapsed))}>
+            <h4 className="settings-toggle font-blue" onClick={() => {
+              playSound("reset");
+              dispatch(adjustElapsed(0 - settings.elapsed));
+            }}>
               reset elapsed time
             </h4>
             <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>
@@ -126,17 +142,34 @@ const Settings = () => {
               <span className="option">total time:</span>
               <span className="value">{total}</span>
             </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setFocus("next"))}>
+            <h4 className="settings-toggle" onClick={() => {
+              dispatch(setFocus("next"));
+              playSound("up");
+            }}>
               <span className="option">focus length:</span>
               <span className="value focus">{formatTime(settings.focus)}</span>
             </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setChill("next"))}>
+            <h4 className="settings-toggle" onClick={() => {
+              dispatch(setChill("next"));
+              playSound("up");
+            }}>
               <span className="option">lil chill length:</span>
               <span className="value chill">{formatTime(settings.chill)}</span>
             </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setBigChill("next"))}>
+            <h4 className="settings-toggle" onClick={() => {
+              dispatch(setBigChill("next"));
+              playSound("up");
+            }}>
               <span className="option">big chill length:</span>
               <span className="value bigChill">{formatTime(settings.bigChill)}</span>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
+              <span className="option">autostart:</span>
+              <span className="value">{settings.autoStart ? "enabled" : "disabled"}</span>
+            </h4>
+            <h4 className="settings-toggle" onClick={() => dispatch(toggleSound())}>
+              <span className="option">sound fx:</span>
+              <span className="value">{settings.playSound ? "on" : "off"}</span>
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(setTheme("next"))}>
               <span className="option">bg color:</span>
@@ -146,22 +179,15 @@ const Settings = () => {
               <span className="option">milk color:</span>
               <span className={`value font-${settings.liquid}`}>{settings.liquid}</span>
             </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(setAnimation("next"))}>
-              <span className="option">animation style:</span>
-              <span className="value">{settings.animation}</span>
-            </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleInvert())}>
               <span className="option">timer style:</span>
               <span className="value">{settings.invert ? "inverted" : "default"}</span>
             </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(toggleSound())}>
-              <span className="option">timer alarm:</span>
-              <span className="value">{settings.playSound ? "on" : "off"}</span>
+            <h4 className="settings-toggle" onClick={() => dispatch(setAnimation("next"))}>
+              <span className="option">animation style:</span>
+              <span className="value">{settings.animation}</span>
             </h4>
-            <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
-              <span className="option">autostart:</span>
-              <span className="value">{settings.autoStart ? "enabled" : "disabled"}</span>
-            </h4>
+            <h5>TIP: To increase performance, set animation style to flat or off</h5>
             <h4 className="settings-toggle page-control" onClick={() => dispatch(togglePage())}>&lt; prev page</h4>
           </>
         }

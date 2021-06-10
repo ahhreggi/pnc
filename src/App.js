@@ -15,8 +15,9 @@ const App = () => {
 
   // Local States
   const [showAbout, setShowAbout] = useState(false);
-  const [showHelp, setShowHelp] = useState(false);
+  const [showHelp, setShowHelp] = useState(true);
   const [shift, setShift] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Global States
   const timer = useSelector(state => state.timer);
@@ -29,7 +30,7 @@ const App = () => {
     dispatch(toggleSettings());
   };
 
-  // ALERTS /////////////////////////////////////////////////////////
+  //  MESSAGE ALERTS ////////////////////////////////////////////////
 
   // Set a timeout for the alert display
   useEffect(() => {
@@ -51,6 +52,29 @@ const App = () => {
   // Set the alert in state as the given message
   const showAlert = (message) => {
     dispatch(setAlert(message));
+  };
+
+  // AUDIO ALERTS ///////////////////////////////////////////////////
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  });
+
+  useEffect(() => {
+    playSound("drop");
+  }, [settings.playSound, settings.theme, settings.liquid, settings.animation, settings.invert, settings.autoStart]);
+
+  useEffect(() => {
+    playSound("tick");
+  }, [settings.mode]);
+
+  const playSound = (sound) => {
+    if (settings.playSound && !loading) {
+      const audio = new Audio(`/sounds/${sound}.mp3`);
+      audio.play();
+    }
   };
 
   // KEYPRESS EVENTS ////////////////////////////////////////////////
@@ -93,11 +117,13 @@ const App = () => {
     // SPACEBAR: Timer start/stop
     case "Space":
       if (timer.enabled) {
-        dispatch(stopTimer());
         showAlert("timer stopped");
+        dispatch(stopTimer());
+        playSound("stop");
       } else {
-        dispatch(startTimer());
         showAlert("timer started");
+        dispatch(startTimer());
+        playSound("start");
       }
       break;
 
@@ -124,16 +150,19 @@ const App = () => {
     case "KeyR":
       dispatch(resetTimer());
       showAlert("timer restarted");
+      playSound("reset");
       break;
 
     // Shift + (WASD/Arrow Keys): Adjust intervals, current step
     case "Shift+KeyW": case "Shift+ArrowUp":
       dispatch(adjustInterval(1));
       showAlert("interval increased");
+      playSound("up");
       break;
     case "Shift+KeyS": case "Shift+ArrowDown":
       dispatch(adjustInterval(-1));
       showAlert("interval decreased");
+      playSound("down");
       break;
     case "Shift+KeyA": case "Shift+ArrowLeft":
       dispatch(getNextStep(-1));
@@ -151,6 +180,7 @@ const App = () => {
       dispatch(resetInterval());
       dispatch(resetTimer());
       showAlert(`${settings.mode} interval has been reset to default!`);
+      playSound("reset");
       break;
 
     // Q: Toggle autostart
@@ -190,6 +220,7 @@ const App = () => {
     case "Shift+KeyT":
       dispatch(resetTheme());
       showAlert("styles have been reset to default!");
+      playSound("reset");
       break;
 
     // 1, 2, 3: Navigate menus
@@ -262,10 +293,10 @@ const App = () => {
     }
   };
 
-  // Toggle timer alarm
+  // Toggle sound fx
   const onToggleSound = () => {
     dispatch(toggleSound());
-    showAlert("timer alarm");
+    showAlert("sound fx");
   };
 
   // COMPONENT VARIABLES ////////////////////////////////////////////
@@ -303,7 +334,7 @@ const App = () => {
     message += ` to ${settings.animation}`;
     break;
   }
-  case "timer alarm": {
+  case "sound fx": {
     message += ` ${settings.playSound ? "enabled" : "disabled"}`;
     break;
   }
@@ -355,7 +386,9 @@ const App = () => {
       <Settings />
 
       {/* Milk Animation */}
-      <Milk />
+      {!loading &&
+        <Milk />
+      }
 
     </main>
   );

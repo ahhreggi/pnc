@@ -83,7 +83,7 @@ const Help = (props) => {
             <span className="key">M</span>
           </span>
           <span className="value">
-            toggle timer alarm
+            toggle sound fx
           </span>
         </h4>
         <h4>
