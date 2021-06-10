@@ -34,10 +34,10 @@ const App = () => {
   // TIPS ///////////////////////////////////////////////////////////
 
   useEffect(() => {
-    if (timer.enabled && showTip) {
+    if ((timer.enabled || settings.alert) && showTip) {
       setShowTip(null);
     }
-  }, [timer.enabled]);
+  }, [timer.enabled, settings.alert]);
 
   // MESSAGE ALERTS /////////////////////////////////////////////////
 
@@ -372,11 +372,6 @@ const App = () => {
 
       {/* Main Display */}
       <section className="display foreground">
-        <div className="tip">
-          {showTip &&
-            <h4>{showTip}</h4>
-          }
-        </div>
         <h2 className="title settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
         <Timer />
         <footer onClick={() => onToggleSettings()}>
@@ -391,6 +386,9 @@ const App = () => {
           <h4 className={`alert ${settings.alert ? "show" : ""} alert-${settings.alertTimeout}`}>
             {message}
           </h4>
+          <div className="tip">
+            <h4>{showTip}</h4>
+          </div>
         </div>
       </section>
 
