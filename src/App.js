@@ -31,6 +31,25 @@ const App = () => {
     dispatch(toggleSettings());
   };
 
+  const showOverlay = (open) => {
+    setShowAbout(false);
+    setShowHelp(false);
+    if (settings.visible && open !== "settings") {
+      dispatch(toggleSettings());
+    }
+    if (open === "about") {
+      setShowAbout(true);
+    }
+    if (open === "help") {
+      setShowHelp(true);
+    }
+    if (open === "settings") {
+      if (!settings.visible) {
+        dispatch(toggleSettings());
+      }
+    }
+  };
+
   // TIPS ///////////////////////////////////////////////////////////
 
   useEffect(() => {
@@ -361,9 +380,9 @@ const App = () => {
       {/* Nav Bar */}
       <header className="nav foreground">
         <div className="nav-left">
-          <h4 className="settings-toggle" onClick={() => setShowAbout(true)}>about</h4>
-          <h4 className="settings-toggle" onClick={() => onToggleSettings()}>settings</h4>
-          <h4 className="settings-toggle" onClick={() => setShowHelp(true)}>controls</h4>
+          <h4 className={`settings-toggle ${showAbout ? "selected" : ""}`} onClick={() => showOverlay("about")}>about</h4>
+          <h4 className={`settings-toggle ${settings.visible ? "selected" : ""}`} onClick={() => showOverlay("settings")}>settings</h4>
+          <h4 className={`settings-toggle ${showHelp ? "selected" : ""}`} onClick={() => showOverlay("help")}>controls</h4>
         </div>
         <div className="nav-right" onClick={() => onToggleSound()}>
           <i className={`sound-toggle fa fa-volume-up ${settings.playSound ? "active" : ""}`} />
@@ -376,7 +395,7 @@ const App = () => {
         <Timer />
         <footer onClick={() => onToggleSettings()}>
           <h3 className="settings-toggle mode">
-          ~ <span>{formatMode(settings.mode)}</span> ~
+            ~ <span>{formatMode(settings.mode)}</span> ~
           </h3>
           <h4>
             {settings.step}/{settings.interval * 2}
