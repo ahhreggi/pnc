@@ -15,7 +15,7 @@ const App = () => {
 
   // Local States
   const [showAbout, setShowAbout] = useState(false);
-  const [showHelp, setShowHelp] = useState(true);
+  const [showHelp, setShowHelp] = useState(false);
   const [shift, setShift] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +59,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 100);
   });
 
   useEffect(() => {
@@ -386,9 +386,7 @@ const App = () => {
       <Settings />
 
       {/* Milk Animation */}
-      {!loading &&
-        <Milk />
-      }
+      <Milk />
 
     </main>
   );

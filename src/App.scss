@@ -8,10 +8,6 @@
   @include flex-center;
   @include custom-scrollbar;
 
-  &.loading {
-
-  }
-
   .foreground {
     opacity: 0.95;
     z-index: 1;
