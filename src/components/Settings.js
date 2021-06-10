@@ -165,7 +165,7 @@ const Settings = () => {
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleAutoStart())}>
               <span className="option">autostart:</span>
-              <span className="value">{settings.autoStart ? "enabled" : "disabled"}</span>
+              <span className="value">{settings.autoStart ? "on" : "off"}</span>
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleSound())}>
               <span className="option">sound fx:</span>
@@ -181,7 +181,7 @@ const Settings = () => {
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(toggleInvert())}>
               <span className="option">timer style:</span>
-              <span className="value">{settings.invert ? "inverted" : "default"}</span>
+              <span className={`value ${settings.invert ? settings.mode : ""}`}>{settings.invert ? "inverted" : "default"}</span>
             </h4>
             <h4 className="settings-toggle" onClick={() => dispatch(setAnimation("next"))}>
               <span className="option">animation style:</span>

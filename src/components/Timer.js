@@ -55,9 +55,20 @@ const Timer = () => {
     if (enabled) {
       dispatch(setAlert("timer stopped"));
       dispatch(stopTimer());
+      playSound("stop");
     } else {
       dispatch(setAlert("timer started"));
       dispatch(startTimer());
+      playSound("start");
+    }
+  };
+
+  // HELPER FUNCTIONS ///////////////////////////////////////////////
+
+  const playSound = (sound) => {
+    if (settings.playSound) {
+      const audio = new Audio(`/sounds/${sound}.mp3`);
+      audio.play();
     }
   };
 

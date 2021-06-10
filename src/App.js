@@ -63,16 +63,20 @@ const App = () => {
   });
 
   useEffect(() => {
-    playSound("drop");
+    if (!loading) {
+      playSound("drop");
+    }
   }, [settings.playSound, settings.theme, settings.liquid, settings.animation, settings.invert, settings.autoStart]);
 
   useEffect(() => {
-    playSound("tick");
+    if (!loading) {
+      playSound("tick");
+    }
   }, [settings.mode]);
 
   const playSound = (sound) => {
-    if (settings.playSound && !loading) {
-      const audio = new Audio(`/sounds/${sound}.mp3`);
+    const audio = new Audio(`/sounds/${sound}.mp3`);
+    if (settings.playSound) {
       audio.play();
     }
   };
@@ -227,7 +231,7 @@ const App = () => {
     case "Digit1":
       setShowAbout(true);
       break;
-    case "Digit2": case "Tab":
+    case "Digit2":
       dispatch(toggleSettings());
       break;
     case "Digit3":
