@@ -139,10 +139,7 @@ const settingsReducer = (state = defaultSettings, action) => {
 
   // Elapsed + extra time
   case "ADJUST_ELAPSED": {
-    let newValue = state.elapsed + action.payload;
-    // if (newValue < 0) {
-    //   newValue = 0;
-    // }
+    const newValue = state.elapsed + action.payload;
     return { ...state, elapsed: newValue };
   }
 
