@@ -211,7 +211,7 @@ const App = () => {
     case "Shift+KeyR":
       dispatch(resetInterval());
       dispatch(resetTimer());
-      showAlert(`${settings.mode} interval has been reset to default!`);
+      showAlert(`${settings.mode === "bigChill" ? "big chill" : settings.mode} interval has been reset to default!`);
       playSound("reset");
       break;
 
