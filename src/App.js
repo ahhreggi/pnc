@@ -187,12 +187,12 @@ const App = () => {
     // Shift + (WASD/Arrow Keys): Adjust intervals, current step
     case "Shift+KeyW": case "Shift+ArrowUp":
       dispatch(adjustInterval(1));
-      showAlert(`${settings.mode === "bigChill" ? "big chill" : settings.mode} interval increased`);
+      showAlert("interval increased");
       playSound("up");
       break;
     case "Shift+KeyS": case "Shift+ArrowDown":
       dispatch(adjustInterval(-1));
-      showAlert(`${settings.mode === "bigChill" ? "big chill" : settings.mode} interval decreased`);
+      showAlert("interval decreased");
       playSound("down");
       break;
     case "Shift+KeyA": case "Shift+ArrowLeft":
@@ -210,7 +210,7 @@ const App = () => {
     case "Shift+KeyR":
       dispatch(resetInterval());
       dispatch(resetTimer());
-      showAlert(`${settings.mode === "bigChill" ? "big chill" : settings.mode} interval has been reset to default!`);
+      showAlert("interval has been reset to default!");
       playSound("reset");
       break;
 
