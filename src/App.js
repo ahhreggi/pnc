@@ -402,6 +402,7 @@ const App = () => {
             {settings.step}/{settings.interval * 2}
           </h4>
         </footer>
+        {/* Alerts and Tips */}
         <div className="alert-container">
           <h4 className={`alert ${settings.alert ? "show" : ""} alert-${settings.alertTimeout}`}>
             {message}
