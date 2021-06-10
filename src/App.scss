@@ -207,9 +207,11 @@
 
     .tip {
       height: 1rem;
+
       h4 {
         animation: pulse 2s infinite;
       }
+
       @keyframes pulse {
         0% {
           transform: none;
