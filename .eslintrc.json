@@ -7,11 +7,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended"
-    // "airbnb",
-    // "plugin:import/errors",
-    // "plugin:jsx-a11y/recommended",
-    // "plugin:prettier/recommended",
-    // "prettier/react"
   ],
   "plugins": [
     "react-hooks"
