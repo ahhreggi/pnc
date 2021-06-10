@@ -52,6 +52,7 @@ const App = () => {
 
   // TIPS ///////////////////////////////////////////////////////////
 
+  // Remove tip message on interaction
   useEffect(() => {
     if ((timer.enabled || settings.alert) && showTip) {
       setShowTip(null);
