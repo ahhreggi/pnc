@@ -31,22 +31,20 @@ const App = () => {
     dispatch(toggleSettings());
   };
 
-  const showOverlay = (open) => {
+  const showOverlay = (selection) => {
     setShowAbout(false);
     setShowHelp(false);
-    if (settings.visible && open !== "settings") {
+    if (settings.visible && selection !== "settings") {
       dispatch(toggleSettings());
     }
-    if (open === "about") {
-      setShowAbout(true);
+    if (selection === "about") {
+      setShowAbout(!showAbout);
     }
-    if (open === "help") {
-      setShowHelp(true);
+    if (selection === "help") {
+      setShowHelp(!showHelp);
     }
-    if (open === "settings") {
-      if (!settings.visible) {
-        dispatch(toggleSettings());
-      }
+    if (selection === "settings") {
+      dispatch(toggleSettings());
     }
   };
 
