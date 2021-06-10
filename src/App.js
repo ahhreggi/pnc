@@ -16,6 +16,7 @@ const App = () => {
   // Local States
   const [showAbout, setShowAbout] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [showTip, setShowTip] = useState("Press space or click the timer to start!");
   const [shift, setShift] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -30,7 +31,15 @@ const App = () => {
     dispatch(toggleSettings());
   };
 
-  //  MESSAGE ALERTS ////////////////////////////////////////////////
+  // TIPS ///////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    if (timer.enabled && showTip) {
+      setShowTip(null);
+    }
+  }, [timer.enabled]);
+
+  // MESSAGE ALERTS /////////////////////////////////////////////////
 
   // Set a timeout for the alert display
   useEffect(() => {
@@ -363,6 +372,11 @@ const App = () => {
 
       {/* Main Display */}
       <section className="display foreground">
+        <div className="tip">
+          {showTip &&
+            <h4>{showTip}</h4>
+          }
+        </div>
         <h2 className="title settings-toggle" onClick={() => setShowAbout(true)}>Pomomilk</h2>
         <Timer />
         <footer onClick={() => onToggleSettings()}>
