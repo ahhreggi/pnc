@@ -6,10 +6,10 @@
 <p>A simple interactive pomodoro timer
 </p>
 
-<p>Built with <a href="https://reactjs.org/">React</a> + <a href="https://redux.js.org/">Redux</a>, CSS</a>/<a href="https://sass-lang.com/">Sass</a>, and hosted with <a href="https://www.netlify.com/">Netlify</a></p>
+<p>Built with <a href="https://reactjs.org/">React</a> + <a href="https://redux.js.org/">Redux</a>, CSS</a>/<a href="https://sass-lang.com/">Sass</a>, and hosted with <a href="https://www.linode.com/">Linode</a></p>
 
 <b><a href="http://pomomilk.com/" target="_blank">
-   » View Live Site «
+» View Live Site «
 </a></b>
 
 <img src="./public/screenshots/pomomilk.gif">
@@ -27,6 +27,7 @@
 <!-- FEATURES -->
 
 ## ⭐ Features
+
 - Users can control the timer via quick control hotkeys or the Settings menu.
 - Users can customize interval lengths.
 - Users can view/reset the total elapsed time.
@@ -61,6 +62,7 @@ The project is live
 4. Visit <a href="http://localhost:3000/">http://localhost:3000/</a> on your browser
 
 ## 📷 Screenshots
+
 <img src="./public/screenshots/chill.png">
 <img src="./public/screenshots/alert.png">
 <img src="./public/screenshots/flat.png">
